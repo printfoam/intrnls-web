@@ -1,0 +1,48 @@
+<!-- GENERATED BLOCK — edits here are overwritten. One source: web/_include/footer.html,
+     then  python3 web/_include/sync.py  .
+     NO WORDMARK and no brand heading — the header carries the one logo on this
+     surface and the copyright line already names the company (web/README.md §8). -->
+<footer class="site-foot">
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <p class="foot-lede" data-slot="foot-lede">
+          A small design and engineering company for the industrial problems nobody has
+          solved yet.
+        </p>
+      </div>
+      <div>
+        <h2>Site</h2>
+        <ul>
+          <li><a href="{{ROOT}}what-we-do.html">What we do</a></li>
+          <!-- Work stays out of the header nav but is reachable here and from the Home
+               teaser, so the page is not orphaned while it fills up. -->
+          <li><a href="{{ROOT}}work.html">Work</a></li>
+          <li><a href="{{ROOT}}about.html">About</a></li>
+          <li><a href="{{ROOT}}contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Contact</h2>
+        <!-- REAL FACTS, operator-supplied 2026-08-19. The tel: href is E.164 so it
+             dials from a phone; the visible text stays in the form he wrote it.
+             Never replace one of these with an invented value — delete it instead. -->
+        <ul>
+          <li><a href="mailto:contact@intrnls.com">contact@intrnls.com</a></li>
+          <li><a href="tel:+14142452774">+1 414-245-2774</a></li>
+          <li>Wales, WI</li>
+        </ul>
+      </div>
+      <!-- NO "ELSEWHERE" COLUMN. The operator gave no social accounts, so the column
+           and its heading are gone rather than standing empty; .foot-grid is three
+           columns to match. Re-adding it is this block plus the column count. -->
+    </div>
+    <div class="foot-rule">
+      <span>&copy; intrnls</span>
+      <!-- True about the artefact, not a claim about the company. Copy deck v1.1 is
+           landed; the fact slots it reserves are still open — see the punch list in
+           web/README.md §13. -->
+      <span class="right">Skeleton v0.1 &middot; copy v1.1 &middot; brand tokens v0.1</span>
+    </div>
+  </div>
+</footer>

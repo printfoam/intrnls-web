@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="en" data-ground="cashmere">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-slot="page-title">What we do — intrnls</title>
+<meta name="description" data-slot="meta-description" content="Materials, design and prototyping, pilot to commercialization: how intrnls takes a hard industrial problem from first sample to running plant — and what we decline.">
+<!-- OPEN GRAPH, per-page half. Mirrors the <title> and the meta description
+     directly above, word for word: two sources for one sentence drift apart, and
+     the link preview is the copy nobody re-reads. The shared half (og:image,
+     og:type, twitter:card) is in the include below.
+     ⚠ og:url is ABSOLUTE and the domain is an ASSUMPTION — see the include. -->
+<meta property="og:title" content="What we do — intrnls">
+<meta property="og:description" content="Materials, design and prototyping, pilot to commercialization: how intrnls takes a hard industrial problem from first sample to running plant — and what we decline.">
+<meta property="og:url" content="https://intrnls.com/what-we-do.html">
+<!-- @include:head-common -->
+<!-- GENERATED BLOCK — edits here are overwritten. One source:
+     web/_include/head-common.html, then  python3 web/_include/sync.py  .
+     Per-page <title> and <meta name="description"> live in the page ABOVE the
+     marker, because they are per-page by definition. -->
+<meta name="color-scheme" content="dark light">
+
+<!-- OPEN GRAPH — LIVE as of 2026-08-20. The card is real art now (img/og-card.jpg,
+     1200x630: the same bench photograph as the Home hero, cropped to 1.91:1), so the
+     block is no longer a claim we cannot stand behind.
+     SPLIT, deliberately: og:title / og:description / og:url are PER PAGE and live in
+     each page's <head> ABOVE the include marker, next to <title> and
+     <meta name="description">, which they mirror word for word. Only the parts that
+     are genuinely the same on every page are here. Do not move the per-page half into
+     this partial — every page would then share Home's title in every link preview.
+     ⚠ ABSOLUTE URL, UNCONFIRMED DOMAIN. og:image and og:url must be absolute — a
+     relative path is not fetchable by Slack, iMessage or LinkedIn. We do not have a
+     domain yet; https://intrnls.com/ is the assumption. If the site ships anywhere
+     else, THESE MUST BE CORRECTED — here and in the og:url on all six pages
+     (grep -rn 'https://intrnls.com' web/) — or every link preview breaks. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="intrnls">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://intrnls.com/img/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Close-up of a bench rig: a white flexible shaft coupling joins a polished steel shaft to a stack of precision bearings, a green circuit board out of focus behind.">
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- Favicon: the real mark (Artboard 5, operator-supplied 2026-08-20), replacing
+     the placeholder gradient tile. Browser chrome, not a page surface, so it
+     does not count against the one-logo-per-surface rule. External file (not
+     inlined like the header lockup) — no currentColor need, it never sits on
+     the page's own background. -->
+<link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+
+<!-- One line, deliberately blocking and inline: marks the document as scripted BEFORE
+     first paint, so the CSS can show a working stacked nav (instead of a Menu button
+     that does nothing) when JavaScript is off. Nothing else runs inline. -->
+<script>document.documentElement.classList.add('js')</script>
+
+<!-- Tokens first, site second. tokens.css is a VERBATIM sync of brand/tokens.css —
+     re-sync it, never edit it here. site.css declares no palette of its own. -->
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/site.css">
+<link rel="preload" as="font" type="font/woff2" href="fonts/poppins-latin-800.woff2" crossorigin>
+
+<!-- The site's only global script: the mobile menu. Deferred, and nothing on any page
+     needs it to render, read or be navigated. -->
+<script src="js/site.js" defer></script>
+<!-- /@include:head-common -->
+</head>
+
+<!--
+  ===========================================================================
+  intrnls.com — WHAT WE DO. Art direction: web/README.md.
+  GROUND: Cashmere (white) — the longest-copy page on the site; sustained
+  reading wants the light ground (§2).
+  ONE gradient moment: the hero headline. ONE ground flip: the closing CTA
+  band (Lab). ONE filled green: the CTA button inside it.
+  THE LINE THIS PAGE HOLDS (§1): this page is what we CAN DO FOR YOU —
+  capability, process, how an engagement runs. Proof of having done it lives
+  on Work. If a sentence could sit on either page, it belongs here.
+  COPY: every replaceable string is marked data-slot="…".
+  ===========================================================================
+-->
+<body>
+
+<!-- @include:header nav=what-we-do -->
+<!-- GENERATED BLOCK — edits here are overwritten. The one source for the skip link,
+     the header and the primary nav is web/_include/header.html; change it there and
+     run  python3 web/_include/sync.py  to push it into every page. -->
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-head">
+  <div class="container head-bar">
+    <!-- THE ONE LOGO ON THIS SURFACE. Real lockup, operator-supplied 2026-08-20
+         (intrnls_logos.zip, Artboard 3) — replaces the typeset stand-in. Inlined
+         (not <img src>) because its keyline stroke is set to currentColor so ONE
+         file works on both Lab and Cashmere headers: .brand sets color:var(--fg),
+         the SVG inherits it, no second asset or CSS toggle needed. Source of
+         record + the other 4 artboards: design/incoming-photos/logos-source/.
+         svg is aria-hidden — the parent link's aria-label carries the accessible
+         name, so nothing announces the mark twice. -->
+    <a class="brand" href="index.html" aria-label="intrnls — home" data-nav="home"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 540 180"><defs><style>.cls-1{fill:none;stroke-width:0px}.cls-2{clip-path:url(#clippath-1)}.cls-3{fill:url(#New_Gradient_Swatch_1-2);stroke-width:7px}.cls-3,.cls-4{stroke:currentColor;stroke-miterlimit:10}.cls-4{fill:url(#New_Gradient_Swatch_1);stroke-width:4px}.cls-5{clip-path:url(#clippath)}</style><clipPath id="clippath"><path class="cls-1" d="M80.93,13.14c-.52,0-1.04.13-1.5.4L17.08,49.54c-.93.53-1.5,1.53-1.5,2.6v72c0,1.07.57,2.06,1.5,2.6l62.35,36c.91.53,2.09.53,3,0l62.35-36c1.43-.83,1.93-2.67,1.1-4.1-.83-1.43-2.66-1.93-4.1-1.1l-60.85,35.13-59.35-34.27V53.87l59.35-34.27,60.85,35.13c1.43.83,3.27.33,4.1-1.1.83-1.43.33-3.27-1.1-4.1L82.43,13.54c-.46-.27-.98-.4-1.5-.4ZM34.17,112.11c-.26,0-.52.04-.78.1-.77.21-1.42.7-1.82,1.4-.83,1.43-.33,3.27,1.1,4.1l46.77,27c.91.53,2.09.53,3,0l46.77-27c.93-.53,1.5-1.53,1.5-2.6v-54c0-1.07-.57-2.06-1.5-2.6l-46.77-27c-.93-.54-2.07-.53-3,0l-46.77,27c-1.43.83-1.93,2.67-1.1,4.1.4.69,1.05,1.19,1.82,1.4.77.21,1.58.1,2.27-.3l45.27-26.13,43.77,25.27v50.54l-43.77,25.27-45.27-26.13c-.46-.27-.98-.4-1.5-.4ZM80.93,55.58l28.18,16.27v32.54l-29.68,17.13c-1.43.83-1.93,2.67-1.1,4.1.53.93,1.53,1.5,2.6,1.5.52,0,1.04-.14,1.49-.4h0s31.18-18,31.18-18c.93-.53,1.5-1.53,1.5-2.6v-36c0-1.07-.57-2.06-1.5-2.6l-31.18-18c-.93-.54-2.07-.53-3,0l-31.18,18c-.93.53-1.5,1.53-1.5,2.6v36c0,1.65,1.35,3,3,3s3-1.35,3-3v-34.27l28.18-16.27ZM65.35,76.09c-1.65,0-3,1.35-3,3v18c0,1.07.57,2.06,1.5,2.6l15.59,9c.91.53,2.09.53,3,0l15.59-9c.93-.53,1.5-1.53,1.5-2.6v-18c0-1.07-.57-2.06-1.5-2.6l-15.59-9c-1.43-.83-3.27-.33-4.1,1.1-.4.69-.51,1.5-.3,2.28.21.77.7,1.42,1.4,1.82l14.09,8.13v14.54l-12.59,7.27-12.59-7.27v-16.27c0-1.65-1.35-3-3-3Z"/></clipPath><linearGradient id="New_Gradient_Swatch_1" x1="12.58" y1="87.94" x2="149.02" y2="87.94" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ff5a1f"/><stop offset=".8" stop-color="#e41a74"/><stop offset=".95" stop-color="#de0037"/></linearGradient><clipPath id="clippath-1"><path class="cls-1" d="M390.42,79.39c2.79,0,5.45.54,7.89,1.62,2.39,1.05,4.5,2.49,6.28,4.27s3.22,3.9,4.27,6.28c1.07,2.44,1.62,5.1,1.62,7.89v23.4c0,.91.31,1.62,1.01,2.32s1.42,1.02,2.33,1.02c.99,0,1.74-.31,2.45-1.01.7-.7,1.01-1.42,1.01-2.33v-23.4c0-3.73-.71-7.26-2.11-10.49-1.42-3.26-3.35-6.12-5.75-8.52-2.39-2.39-5.26-4.33-8.52-5.75-3.22-1.4-6.75-2.11-10.48-2.11s-7.14.71-10.37,2.11c-3.26,1.42-6.12,3.35-8.52,5.75-2.4,2.4-4.33,5.26-5.75,8.52-1.4,3.22-2.11,6.75-2.11,10.48v23.4c0,.91.31,1.62,1.01,2.32s1.42,1.02,2.33,1.02c.97,0,1.69-.3,2.35-.98.69-.71.99-1.44.99-2.36v-23.4c0-2.8.54-5.46,1.62-7.89,1.05-2.39,2.49-4.5,4.27-6.28,1.78-1.78,3.93-3.22,6.37-4.28,2.47-1.07,5.1-1.61,7.81-1.61ZM335.94,73.19c-2.17,0-4.29.42-6.29,1.24-2.03.83-3.75,1.98-5.27,3.5-1.52,1.52-2.67,3.25-3.5,5.27-.82,2-1.24,4.12-1.24,6.29v33.36c0,.91.31,1.62,1.01,2.32s1.42,1.02,2.33,1.02c.97,0,1.69-.3,2.35-.98.69-.71.99-1.44.99-2.36v-33.36c0-2.39.9-4.62,2.67-6.63l.31-.31c2.01-1.78,4.24-2.68,6.64-2.68h8.88c.93,0,1.66-.31,2.36-.99.67-.66.98-1.38.98-2.35s-.3-1.69-.98-2.35c-.71-.69-1.44-.99-2.36-.99h-8.88ZM223.38,79.39c2.79,0,5.45.54,7.89,1.62,2.39,1.05,4.5,2.49,6.28,4.27s3.22,3.9,4.27,6.28c1.07,2.44,1.62,5.1,1.62,7.89v23.4c0,.91.31,1.62,1.01,2.32s1.42,1.02,2.33,1.02c.99,0,1.74-.31,2.45-1.01.7-.7,1.01-1.42,1.01-2.33v-23.4c0-3.73-.71-7.26-2.11-10.49-1.42-3.26-3.35-6.12-5.75-8.52-2.39-2.39-5.26-4.33-8.52-5.75-3.22-1.4-6.75-2.11-10.48-2.11s-7.14.71-10.37,2.11c-3.26,1.42-6.12,3.35-8.52,5.75-2.4,2.4-4.33,5.26-5.75,8.52-1.4,3.22-2.11,6.75-2.11,10.48v23.4c0,.91.31,1.62,1.01,2.32s1.42,1.02,2.33,1.02c.97,0,1.69-.3,2.35-.98.69-.71.99-1.44.99-2.36v-23.4c0-2.8.54-5.46,1.62-7.89,1.05-2.39,2.49-4.5,4.27-6.28,1.78-1.78,3.93-3.22,6.37-4.28,2.47-1.07,5.1-1.61,7.81-1.61ZM170.82,72.59c-.97,0-1.69.3-2.35.98-.68.71-.99,1.47-.99,2.48v46.8c0,.93.31,1.66.99,2.36.66.68,1.38.98,2.35.98.91,0,1.62-.31,2.33-1.01.7-.7,1.01-1.42,1.01-2.33v-46.8c0-.99-.31-1.74-1.02-2.45-.7-.7-1.42-1.01-2.32-1.01ZM170.82,48.47c-1.65,0-2.93.5-4.03,1.58-1.08,1.06-1.59,2.3-1.59,3.92s.51,2.9,1.61,4c1.1,1.1,2.38,1.62,4.01,1.62,1.55,0,2.78-.51,3.88-1.62,1.1-1.1,1.62-2.37,1.62-4s-.5-2.86-1.59-3.92c-1.1-1.08-2.35-1.58-3.91-1.58ZM481.97,118.91c-.91,0-1.62.31-2.33,1.01-.7.7-1.01,1.46-1.01,2.45,0,.91.31,1.62,1.01,2.32s1.42,1.02,2.33,1.02h25.56c1.95,0,3.76-.36,5.55-1.11,1.77-.74,3.34-1.8,4.7-3.15,1.35-1.35,2.36-2.87,3.07-4.65.72-1.8,1.07-3.59,1.07-5.48s-.31-3.52-.91-5.12c-.61-1.6-1.47-3.04-2.55-4.28-1.07-1.23-2.37-2.25-3.87-3.05-1.5-.8-3.18-1.34-4.99-1.6l-19.8-2.42c-1.74-.29-3.28-1.14-4.44-2.45-1.21-1.35-1.84-3.03-1.84-4.85,0-2.05.79-3.92,2.29-5.42,1.49-1.49,3.37-2.28,5.41-2.28h23.76c1.01,0,1.78-.31,2.48-.99.68-.66.98-1.38.98-2.35s-.3-1.69-.98-2.35c-.71-.69-1.47-.99-2.48-.99h-23.76c-1.99,0-3.87.37-5.59,1.1-1.72.73-3.24,1.76-4.5,3.06-1.3,1.33-2.36,2.91-3.15,4.68-.76,1.7-1.14,3.56-1.14,5.54,0,1.8.3,3.49.9,5.03.61,1.58,1.46,2.95,2.58,4.21,1.13,1.26,2.48,2.33,4.01,3.18,1.49.82,3.04,1.31,4.75,1.5,3.1.41,6.37.83,9.89,1.26,3.53.44,6.82.86,9.86,1.26l.13.02c1.73.29,3.27,1.14,4.43,2.44,1.21,1.36,1.85,3.04,1.85,4.85,0,2.05-.77,3.9-2.23,5.35-1.46,1.46-3.35,2.23-5.47,2.23h-25.56ZM444.42,48.47c-.93,0-1.66.31-2.36.99-.68.66-.98,1.38-.98,2.35v57.6c0,2.26.42,4.31,1.27,6.29.86,1.98,2.04,3.74,3.52,5.22,1.48,1.48,3.24,2.67,5.21,3.52,1.98.86,4.03,1.27,6.29,1.27h2.4c.97,0,1.69-.3,2.35-.98.69-.71.99-1.44.99-2.36,0-1.01-.31-1.78-.99-2.49-.65-.67-1.38-.97-2.35-.97h-2.4c-2.57,0-4.91-.94-6.75-2.72-1.88-1.81-2.87-4.16-2.87-6.78v-57.6c0-.99-.29-1.72-.96-2.39-.66-.66-1.4-.95-2.39-.95ZM268.98,72.59c-.91,0-1.62.31-2.33,1.01-.7.7-1.01,1.46-1.01,2.45,0,.91.31,1.62,1.01,2.32s1.42,1.02,2.33,1.02h7.58v30.02c0,2.23.43,4.34,1.27,6.29.85,1.97,2.03,3.7,3.49,5.13,1.49,1.45,3.25,2.63,5.24,3.49,1.98.86,4.03,1.27,6.29,1.27h3c.99,0,1.72-.29,2.39-.96.66-.66.95-1.4.95-2.38,0-.93-.31-1.66-.99-2.37-.65-.67-1.38-.97-2.35-.97h-3c-2.6,0-4.93-.96-6.74-2.77-1.81-1.8-2.76-4.13-2.76-6.73v-30.02h13.22c.97,0,1.69-.3,2.35-.98.69-.71.99-1.44.99-2.36,0-1.01-.31-1.78-.99-2.48-.65-.67-1.38-.98-2.35-.98h-13.22v-20.78c0-.97-.3-1.69-.98-2.35-.71-.68-1.47-.99-2.48-.99-.93,0-1.66.31-2.36.99-.68.66-.98,1.38-.98,2.35v20.78h-7.58Z"/></clipPath><linearGradient id="New_Gradient_Swatch_1-2" x1="160.51" y1="87.33" x2="526.6" y2="87.33" xlink:href="#New_Gradient_Swatch_1"/></defs><g class="cls-5"><rect class="cls-4" x="12.58" y="10.68" width="136.44" height="154.52"/></g><g class="cls-2"><rect class="cls-3" x="160.51" y="29.45" width="366.09" height="115.77"/></g></svg></a>
+
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primary-nav">
+      <span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span>Menu</span>
+    </button>
+
+    <nav class="nav" id="primary-nav" aria-label="Primary">
+      <a href="what-we-do.html" data-nav="what-we-do" aria-current="page">What we do</a>
+      <!-- WORK IS IN THE NAV — operator decision, 2026-08-16. It was hidden per README §1
+           (three empty cards read worse than no page), but hiding it from the nav alone was
+           incoherent: the Home hero, the Home section link and the footer all still pointed
+           here, and Home previews the same empty cards. Consistency beat concealment — show
+           it and own that it is thin. The cards stay reserved until a partner clears them.
+           Art director's note: flip this to FIRST in the order once three are cleared. -->
+      <a href="work.html" data-nav="work">Work</a>
+      <a href="about.html" data-nav="about">About</a>
+      <!-- Deliberately btn-line, not btn-go: the filled acid green is reserved for the
+           page's primary action so the hero/CTA button stays the hottest thing on screen. -->
+      <a class="btn btn-line" href="contact.html" data-nav="contact">Contact</a>
+    </nav>
+  </div>
+</header>
+<!-- /@include:header -->
+
+<!-- tabindex="-1" so the skip link actually MOVES focus, not just the scroll
+     position: Chrome and Firefox will forward focus to a non-focusable anchor
+     target, Safari will not. No ring appears — the ring is :focus-visible. -->
+<main id="main" tabindex="-1">
+
+  <!-- ======================= HERO ======================= -->
+  <section class="hero" aria-labelledby="hero-h">
+    <div class="container">
+      <span class="kicker" data-slot="hero-eyebrow">Capability</span>
+
+      <!-- The page's ONE gradient moment: three words, display size, inside the h1. -->
+      <h1 class="h1" id="hero-h" data-slot="hero-headline">
+        Three ways in,<br class="brk"> <span class="grad">one way through</span>.
+      </h1>
+
+      <div class="hero-foot">
+        <p class="lede" data-slot="hero-standfirst">
+          We solve industrial problems that have already defeated a serious attempt or two.
+          The work runs from materials, through design and prototyping, to a pilot in a live
+          plant. Only the last step counts.
+        </p>
+        <div class="hero-actions">
+          <!-- btn-line, not btn-go: this page spends its single filled green on the
+               closing CTA, where the decision actually gets made. -->
+          <a class="btn btn-line" href="contact.html">Bring us a hard problem</a>
+          <a class="btn btn-text" href="#process">How it runs <span class="arw" aria-hidden="true">&rarr;</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE PROCESS PHOTOGRAPH — ours, not stock: the work happening, in our own
+       clothes, holding our own part. Below the fold on every width, so it is lazy.
+       width/height are the file's real pixels; ⚠ re-crops to 4:3 under 640px, and
+       the part and the hand both survive that crop (verified at 390px). -->
+  <div class="container">
+    <img class="hero-media" src="img/process-what-we-do.jpg" width="2400" height="900"
+         loading="lazy" decoding="async"
+         alt="Someone in a white lab coat holds a pale yellow 3D-printed block out towards the camera: stacked wavy fins with round holes through them, in a bright workshop.">
+  </div>
+
+  <!-- ======================= CAPABILITY ======================= -->
+  <section class="band" aria-labelledby="cap-h">
+    <div class="container">
+      <div class="sec-head">
+        <div>
+          <span class="kicker">Capability</span>
+          <h2 class="h2" id="cap-h" data-slot="cap-headline">What we can do.</h2>
+          <p class="deck" data-slot="cap-deck">
+            Three disciplines, one small team, no hand-offs. The person who chose the material
+            is the same person standing next to the pilot when it runs.
+          </p>
+        </div>
+        <a class="sec-more" href="contact.html">Ask about something else &rarr;</a>
+      </div>
+
+      <!-- Three .split blocks. The ids are the anchors the Home cards link to
+           (index.html -> what-we-do.html#materials etc.). Copy deck v1.1 renamed the
+           three axes, so the ids were renamed with them: a #making anchor landing on
+           "Pilot -> commercialization" is a stale link a reader can see. Change one,
+           change the Home card href too.
+           The .tags chips were cut by operator decision 2026-08-20 -- see
+           web/README.md §16. -->
+      <div id="materials" class="split">
+        <div class="split-label">
+          <span class="idx">01</span>
+          <h3 class="h3" data-slot="cap-1-title">Materials</h3>
+        </div>
+        <div class="prose">
+        <p data-slot="cap-1-body-1">
+          A structure that has never existed needs a material that has never been asked to do
+          that. We develop and test the polymer composites our designs are made of, and the
+          routes from additive to mass production. That means printing it, wetting it, loading
+          it, and cycling it until we know where it fails &mdash; before a client ever sees it.
+        </p>
+        <p data-slot="cap-1-body-2">
+          Clients usually arrive with a geometry they believe in and no way to make it survive
+          its duty. We start by asking what it has to survive &mdash; chemistry, temperature,
+          load, years &mdash; and then build a material path that gets it there.
+        </p>
+        <ul data-slot="cap-1-list" aria-label="Materials, what you get">
+          <li>Material selection and qualification against your duty</li>
+          <li>Printed and cast samples at real feature size</li>
+          <li>A route from prototype process to volume process</li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="design-prototyping" class="split">
+      <div class="split-label">
+        <span class="idx">02</span>
+        <h3 class="h3" data-slot="cap-2-title">Design + prototyping</h3>
+      </div>
+      <div class="prose">
+        <p data-slot="cap-2-body-1">
+          We design structures that do a physical job &mdash; carry a load, shed heat, hold a
+          liquid film, pass a gas &mdash; and we prove them at full scale, not in a rendering.
+          Much of our work is in triply periodic minimal surfaces and related geometry, where
+          shape does what chemistry or brute force used to. The prototype is the argument; if
+          it doesn&rsquo;t hold up on the bench it doesn&rsquo;t leave the building.
+        </p>
+        <p data-slot="cap-2-body-2">
+          We&rsquo;re a company, not a bureau. We take a brief and give back a position, with
+          the parts and the data to defend it &mdash; including the parts that told us we were
+          wrong. What a client gets is a design they can argue with, not a drawing they have
+          to trust.
+        </p>
+        <ul data-slot="cap-2-list" aria-label="Design and prototyping, what you get">
+          <li>Geometry designed against the physics, not around it</li>
+          <li>Full-scale prototypes and the test data behind them</li>
+          <li>Design files, drawings, and the reasoning that produced them</li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="pilot" class="split">
+      <div class="split-label">
+        <span class="idx">03</span>
+        <h3 class="h3" data-slot="cap-3-title">Pilot &rarr; commercialization</h3>
+      </div>
+      <div class="prose">
+        <p data-slot="cap-3-body-1">
+          A prototype proves an idea once. A pilot proves it every day, in someone else&rsquo;s
+          plant, next to equipment that has run for thirty years. We plan the trial, build what
+          goes in, stand beside it while it runs, and turn what we learn into the next
+          revision. When it holds, we help carry it into a product &mdash; manufacturing,
+          supply, and the commercial shape it needs.
+        </p>
+        <p data-slot="cap-3-body-2">
+          This is the step most clients balk at, and it is the only one that changes anything.
+          A study or a prototype on its own leaves the problem exactly where it was. We would
+          rather lose the engagement than skip the pilot.
+        </p>
+        <ul data-slot="cap-3-list" aria-label="Pilot to commercialization, what you get">
+          <li>Pilot design, build, installation, and on-site support</li>
+          <li>Data you can put in front of your own engineers</li>
+          <li>A path to volume: partners, process, and terms</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= PROCESS ======================= -->
+<section class="band" id="process" aria-labelledby="proc-h">
+  <div class="container">
+    <div class="sec-head">
+      <div>
+        <span class="kicker">Process</span>
+        <h2 class="h2" id="proc-h" data-slot="proc-headline">How an engagement runs.</h2>
+        <p class="deck" data-slot="proc-deck">
+          Four steps, always in this order, and we don&rsquo;t skip the last two. You bring
+          the problem and the plant; we bring everything in between.
+        </p>
+      </div>
+    </div>
+
+    <!-- Four steps, not links: the whole step is the content, there is nowhere
+         to click through to. Same .card component, four across. -->
+    <div class="cards" data-cols="4">
+      <article class="card">
+        <span class="idx">01</span>
+        <h3 class="h3" data-slot="proc-1-title">Understand the problem</h3>
+        <p data-slot="proc-1-body">
+          We start with the constraint that has beaten everyone else &mdash; technical,
+          operational, or economic &mdash; and agree on what &ldquo;solved&rdquo; would
+          look like.
+        </p>
+      </article>
+      <article class="card">
+        <span class="idx">02</span>
+        <h3 class="h3" data-slot="proc-2-title">Develop and validate</h3>
+        <p data-slot="proc-2-body">
+          Materials, geometry, and prototypes, tested against that definition. Most ideas die
+          here. The one that doesn&rsquo;t goes forward with data.
+        </p>
+      </article>
+      <article class="card">
+        <span class="idx">03</span>
+        <h3 class="h3" data-slot="proc-3-title">Demonstrate in the plant</h3>
+        <p data-slot="proc-3-body">
+          A pilot in your facility, at a scale that means something, run long enough to find
+          out what breaks. We build it, install it, and stay with it.
+        </p>
+      </article>
+      <article class="card">
+        <span class="idx">04</span>
+        <h3 class="h3" data-slot="proc-4-title">Carry it to product</h3>
+        <p data-slot="proc-4-body">
+          Manufacturing route, supply, and commercial terms &mdash; the unglamorous work that
+          turns a successful trial into something you can buy again next year.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+  <!-- ======================= ENGAGEMENT ======================= -->
+  <section class="band" id="engagement" aria-labelledby="eng-h">
+    <div class="container">
+      <div class="sec-head">
+        <div>
+          <span class="kicker">Engagement</span>
+          <h2 class="h2" id="eng-h" data-slot="eng-headline">Who we work with.</h2>
+          <p class="deck" data-slot="eng-deck">
+            We take on a few engagements at a time and turn most enquiries away, politely and
+            quickly. This is what gets one through the door.
+          </p>
+        </div>
+      </div>
+
+      <!-- NO LABEL COLUMN HERE, AND THAT IS DELIBERATE. This was a .split whose label
+           column held two reserved facts — "Minimum engagement" and "Engagements at
+           once". The operator dropped BOTH from the site on 2026-08-19 (not deferred,
+           not reserved: dropped). That left the column holding one orphan kicker,
+           "Shapes", which was itself a flagged copy gap and no longer described the
+           section, so the column and its heading went with the facts rather than stand
+           empty. The three criteria now run as one prose column, capped at --measure
+           like every other body of copy on the site — the section keeps the standard
+           four beats in its .sec-head above, which is what carries it.
+           Restoring either fact means restoring the .split wrapper AND a label the
+           copywriter has actually written. -->
+      <div class="prose">
+        <h3 class="h3" data-slot="eng-1-title">A problem that matters</h3>
+        <p data-slot="eng-1-body">
+          It has to change how a piece of industrial infrastructure gets made or run &mdash; a
+          plant, a fleet, a whole category of equipment. If solving it once, at one site, is
+          the whole prize, it&rsquo;s a good problem and it isn&rsquo;t ours. We&rsquo;re here
+          for the ones that move the industry.
+        </p>
+        <h3 class="h3" data-slot="eng-2-title">A partner who has already tried</h3>
+        <p data-slot="eng-2-body">
+          We work best with leading companies whose own engineers have already taken a serious
+          run at the problem and know exactly why it&rsquo;s hard. You can put a pilot in a
+          real facility and you want to. We don&rsquo;t do feasibility studies for the curious,
+          and we&rsquo;re not the first call &mdash; we&rsquo;re the one after that.
+        </p>
+        <h3 class="h3" data-slot="eng-3-title">Room to go all the way</h3>
+        <p data-slot="eng-3-body">
+          Materials through pilot through product, understood and funded as one arc from the
+          start. Small, scoped jobs &mdash; a prototype, a study, a report &mdash; are not what
+          we do, however interesting, and we say so on the first call, not the last. It has
+          cost us work. It&rsquo;s also why the work we keep tends to finish.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= CTA — THE ONE GROUND FLIP ======================= -->
+  <!-- Lab. This page reads on white and commits on black; it is the same arc the
+       site takes across five pages, compressed into one scroll. Exactly one flip. -->
+  <section class="band cta" data-ground="lab" aria-labelledby="cta-h">
+    <div class="container">
+      <h2 class="h2" id="cta-h" data-slot="cta-headline">Tell us what&rsquo;s inside.</h2>
+      <p class="lede" data-slot="cta-body">
+        Bring the problem your team is stuck on. If it&rsquo;s the right shape we&rsquo;ll ask
+        hard questions back. If it isn&rsquo;t, we&rsquo;ll tell you quickly.
+      </p>
+      <div class="cta-actions">
+        <!-- THE page's one filled green. -->
+        <a class="btn btn-go" href="contact.html">Bring us a hard problem <span class="arw" aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn-line" href="about.html">About the company</a>
+      </div>
+      <!-- A REAL COMMITMENT — see index.html. Same wording on all five CTA bands. -->
+      <p class="fineprint" data-slot="cta-fineprint">We reply within 48 hours.</p>
+    </div>
+  </section>
+
+</main>
+
+<!-- @include:footer -->
+<!-- GENERATED BLOCK — edits here are overwritten. One source: web/_include/footer.html,
+     then  python3 web/_include/sync.py  .
+     NO WORDMARK and no brand heading — the header carries the one logo on this
+     surface and the copyright line already names the company (web/README.md §8). -->
+<footer class="site-foot">
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <p class="foot-lede" data-slot="foot-lede">
+          A small design and engineering company for the industrial problems nobody has
+          solved yet.
+        </p>
+      </div>
+      <div>
+        <h2>Site</h2>
+        <ul>
+          <li><a href="what-we-do.html">What we do</a></li>
+          <!-- Work stays out of the header nav but is reachable here and from the Home
+               teaser, so the page is not orphaned while it fills up. -->
+          <li><a href="work.html">Work</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Contact</h2>
+        <!-- REAL FACTS, operator-supplied 2026-08-19. The tel: href is E.164 so it
+             dials from a phone; the visible text stays in the form he wrote it.
+             Never replace one of these with an invented value — delete it instead. -->
+        <ul>
+          <li><a href="mailto:contact@intrnls.com">contact@intrnls.com</a></li>
+          <li><a href="tel:+14142452774">+1 414-245-2774</a></li>
+          <li>Wales, WI</li>
+        </ul>
+      </div>
+      <!-- NO "ELSEWHERE" COLUMN. The operator gave no social accounts, so the column
+           and its heading are gone rather than standing empty; .foot-grid is three
+           columns to match. Re-adding it is this block plus the column count. -->
+    </div>
+    <div class="foot-rule">
+      <span>&copy; intrnls</span>
+      <!-- True about the artefact, not a claim about the company. Copy deck v1.1 is
+           landed; the fact slots it reserves are still open — see the punch list in
+           web/README.md §13. -->
+      <span class="right">Skeleton v0.1 &middot; copy v1.1 &middot; brand tokens v0.1</span>
+    </div>
+  </div>
+</footer>
+<!-- /@include:footer -->
+
+</body>
+</html>

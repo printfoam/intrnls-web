@@ -1,0 +1,86 @@
+/* ============================================================================
+   intrnls — brand design tokens  ·  v0.1  (proposed, pending Matthew+David sign-off)
+   CANONICAL SOURCE: intrnls-graphic-identity/tokens/tokens.css
+   Consumer repos SYNC this file — never fork or re-declare it.
+   Doctrine + rationale: ../PALETTE.md
+   ----------------------------------------------------------------------------
+   Ground truth = this repo + the intrnls.com hero. One gradient, two grounds,
+   one outlaw accent (acid green). NO cyan. NO amber.
+   ============================================================================ */
+
+:root {
+  /* ---- brand primitives (never change these hexes) ---- */
+  --intrnls-orange:  #FF5A1F;   /* gradient start · hero · action        */
+  --intrnls-magenta: #E41A74;   /* the ONE pink — logo magenta            */
+  --intrnls-crimson: #DE0037;   /* gradient end · warn/critical · trail   */
+  --intrnls-green:   #39FF14;   /* acid green — go / alive / the accent   */
+  --intrnls-black:   #000000;   /* "Lab" ground                           */
+  --intrnls-white:   #FFFFFF;   /* "Cashmere" ground                      */
+
+  /* the signature. warm→cool, orange leads, crimson trails. */
+  --intrnls-gradient: linear-gradient(100deg,
+      #FF5A1F 0%, #E41A74 80%, #DE0037 95%);
+  /* vertical variant for tall surfaces (e.g. card backs) */
+  --intrnls-gradient-v: linear-gradient(158deg,
+      #FF5A1F 0%, #E41A74 56%, #DE0037 100%);
+
+  /* ---- neutrals (warm-biased greys, chosen not defaulted) ---- */
+  --intrnls-ink:     #141414;   /* text on Cashmere            */
+  --intrnls-slate:   #5A5F66;   /* secondary text / quiet      */
+  --intrnls-muted:   #8B8F98;   /* labels / captions           */
+  --intrnls-hair:    #ECECEF;   /* hairlines on white          */
+  --intrnls-panel:   #0E0E12;   /* raised panel on Lab         */
+  --intrnls-edge:    #22242B;   /* hairlines on black          */
+
+  /* ---- semantic state (in-palette; NEVER color-alone — pair with glyph+label) ---- */
+  --intrnls-state-go:       var(--intrnls-green);    /* live / confirmed / on   */
+  --intrnls-state-warn:     var(--intrnls-orange);   /* caution / staged        */
+  --intrnls-state-critical: var(--intrnls-crimson);  /* error / armed / E-stop  */
+  --intrnls-state-idle:     var(--intrnls-muted);    /* unknown / blocked       */
+
+  /* ---- type ---- */
+  --intrnls-font-display: 'Cera Pro', 'Poppins', system-ui, sans-serif;
+  --intrnls-font-body:    'Cera Pro', 'Poppins', system-ui, sans-serif;
+  --intrnls-font-mono:    ui-monospace, 'SFMono-Regular', Consolas, Menlo, monospace;
+
+  /* ---- RETIRED — do not use (kept named so linters can flag them) ---- */
+  --intrnls-DEPRECATED-cyan:  #22F0FF;  /* Miami-Vice drift — in no brand asset  */
+  --intrnls-DEPRECATED-amber: #FFB515;  /* Squarespace theme leak — not brand    */
+}
+
+/* ============================================================================
+   GROUNDS — apply one to a surface. Style components through --bg/--fg/--accent,
+   never against a raw hex. Default (no attribute) = Cashmere (light).
+   ============================================================================ */
+
+:root,
+[data-ground="cashmere"] {
+  --bg:       var(--intrnls-white);
+  --fg:       var(--intrnls-ink);
+  --fg-quiet: var(--intrnls-slate);
+  --fg-muted: var(--intrnls-muted);
+  --hairline: var(--intrnls-hair);
+  --accent:   var(--intrnls-magenta);   /* single accent moment on light */
+  --gradient: var(--intrnls-gradient);
+  --go:       var(--intrnls-green);
+}
+
+[data-ground="lab"] {
+  --bg:       var(--intrnls-black);
+  --fg:       var(--intrnls-white);
+  --fg-quiet: #B9BDC5;
+  --fg-muted: #8B93A0;
+  --hairline: var(--intrnls-edge);
+  --accent:   var(--intrnls-green);      /* on black, acid green carries it */
+  --gradient: var(--intrnls-gradient);
+  --go:       var(--intrnls-green);
+}
+
+/* Gradient text helper (works on either ground). */
+.intrnls-gradient-text {
+  background: var(--intrnls-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
