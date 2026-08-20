@@ -277,8 +277,15 @@ h1,h2,h3{font-family:var(--intrnls-font-display); font-weight:800; overflow-wrap
 .brand{
   display:flex; align-items:center; margin-right:auto;
 }
+/* 2.25rem, not the original 1.75rem — operator flagged the mark as hard to
+   read on Cashmere (2026-08-20). Diagnosed as a size problem, not a stroke
+   problem: this SVG's keyline strokes are 7px/4px in a 540x180 viewBox, so
+   at 1.75rem (28px tall) they render sub-pixel thin regardless of colour —
+   confirmed on a reliable full-page screenshot, not the flaky small-viewport
+   captures this session kept hitting. currentColor stays; a heavier/darker
+   stroke would fight the mark's actual (thin, geometric) design intent. */
 .brand svg{
-  display:block; height:1.75rem; width:auto; color:var(--fg);
+  display:block; height:2.25rem; width:auto; color:var(--fg);
 }
 
 .nav{display:flex; align-items:center; gap:var(--s2)}
