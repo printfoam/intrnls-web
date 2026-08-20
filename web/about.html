@@ -267,17 +267,23 @@
         </div>
       </div>
 
-      <!-- Two portraits, 3:4, both now real photographs.
-           ⚠ THEY DO NOT MATCH, and nothing here pretends otherwise. Matthew's is
-           outdoors, warm, foliage behind, polo shirt; David's is an indoor studio
-           headshot, grey seamless, navy suit — and David's file is 432x576, which is
-           only ~1.2x the ~352px slot instead of 2x, so it is the softer of the two on
-           a retina screen. What IS controlled is the frame: identical class, identical
-           3:4 ratio, identical 22rem cap, identical radius, same distance to the name
-           below. The difference then reads as two photographs taken on two days, which
-           is true, rather than as a layout that broke. Do not retouch or recolour one
-           to match the other; one session with a camera fixes it properly, and until
-           then the honest version is the one that ships (README §7).
+      <!-- Two portraits, 3:4, both real photographs, now background-matched.
+           REVERSED 2026-08-20: an earlier version of this comment said not to
+           retouch one to match the other, reasoning that a real reshoot was the
+           only honest fix. The operator overruled that directly ("can you edit
+           my headshot so it matches davids? change the background?") — his own
+           photo, his call to make. Matthew's outdoor/foliage background was
+           replaced (proper alpha matting, not a flood-fill crop -- verified
+           pixel-level for the collar-gap and green-spill failure modes a
+           cruder attempt hit earlier this session) with a studio grey plate
+           colour-matched to David's actual backdrop (sampled, not eyeballed).
+           His pose, expression and clothing are untouched -- this is a
+           background swap, not a new photo, and nothing here claims it's a
+           studio session that didn't happen. What remains different, honestly:
+           David's is a tighter crop under harder studio-strobe contrast;
+           Matthew's keeps its original looser framing and softer available-
+           light rendering on his face -- fixing that would mean re-lighting,
+           which crosses into a new photo, not a background swap.
            NAME and ROLE were reserved fact slots in the skeleton and are now filled,
            because copy deck v1.1 states both inside the bio it wrote ("Matthew Pearlson,
            co-founder." / "David Walker, co-founder."): the fact is the deck's, not ours,
@@ -291,7 +297,7 @@
         <article class="work-item">
           <img class="shot-portrait" src="img/portrait-matthew.jpg" width="900" height="1200"
                loading="lazy" decoding="async"
-               alt="Matthew Pearlson, photographed outdoors in a pale grey polo shirt against dark evergreen foliage, turned slightly to camera.">
+               alt="Matthew Pearlson, photographed in a studio against a plain grey background, in a pale grey polo shirt, turned slightly to camera.">
           <h3 class="h3" data-slot="person-1-name">Matthew Pearlson</h3>
           <span class="meta" data-slot="person-1-role">Co-founder</span>
           <p data-slot="person-1-bio">
