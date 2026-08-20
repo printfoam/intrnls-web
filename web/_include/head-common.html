@@ -1,0 +1,49 @@
+<!-- GENERATED BLOCK — edits here are overwritten. One source:
+     web/_include/head-common.html, then  python3 web/_include/sync.py  .
+     Per-page <title> and <meta name="description"> live in the page ABOVE the
+     marker, because they are per-page by definition. -->
+<meta name="color-scheme" content="dark light">
+
+<!-- OPEN GRAPH — LIVE as of 2026-08-20. The card is real art now (img/og-card.jpg,
+     1200x630: the same bench photograph as the Home hero, cropped to 1.91:1), so the
+     block is no longer a claim we cannot stand behind.
+     SPLIT, deliberately: og:title / og:description / og:url are PER PAGE and live in
+     each page's <head> ABOVE the include marker, next to <title> and
+     <meta name="description">, which they mirror word for word. Only the parts that
+     are genuinely the same on every page are here. Do not move the per-page half into
+     this partial — every page would then share Home's title in every link preview.
+     ⚠ ABSOLUTE URL, UNCONFIRMED DOMAIN. og:image and og:url must be absolute — a
+     relative path is not fetchable by Slack, iMessage or LinkedIn. We do not have a
+     domain yet; https://intrnls.com/ is the assumption. If the site ships anywhere
+     else, THESE MUST BE CORRECTED — here and in the og:url on all six pages
+     (grep -rn 'https://intrnls.com' web/) — or every link preview breaks. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="intrnls">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://intrnls.com/img/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Close-up of a bench rig: a white flexible shaft coupling joins a polished steel shaft to a stack of precision bearings, a green circuit board out of focus behind.">
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- Favicon: the real mark (Artboard 5, operator-supplied 2026-08-20), replacing
+     the placeholder gradient tile. Browser chrome, not a page surface, so it
+     does not count against the one-logo-per-surface rule. External file (not
+     inlined like the header lockup) — no currentColor need, it never sits on
+     the page's own background. -->
+<link rel="icon" type="image/svg+xml" href="{{ROOT}}img/favicon.svg">
+
+<!-- One line, deliberately blocking and inline: marks the document as scripted BEFORE
+     first paint, so the CSS can show a working stacked nav (instead of a Menu button
+     that does nothing) when JavaScript is off. Nothing else runs inline. -->
+<script>document.documentElement.classList.add('js')</script>
+
+<!-- Tokens first, site second. tokens.css is a VERBATIM sync of brand/tokens.css —
+     re-sync it, never edit it here. site.css declares no palette of its own. -->
+<link rel="stylesheet" href="{{ROOT}}css/tokens.css">
+<link rel="stylesheet" href="{{ROOT}}css/site.css">
+<link rel="preload" as="font" type="font/woff2" href="{{ROOT}}fonts/poppins-latin-800.woff2" crossorigin>
+
+<!-- The site's only global script: the mobile menu. Deferred, and nothing on any page
+     needs it to render, read or be navigated. -->
+<script src="{{ROOT}}js/site.js" defer></script>
