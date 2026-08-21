@@ -15,8 +15,6 @@
         <h2>Site</h2>
         <ul>
           <li><a href="{{ROOT}}what-we-do.html">What we do</a></li>
-          <!-- Work stays out of the header nav but is reachable here and from the Home
-               teaser, so the page is not orphaned while it fills up. -->
           <li><a href="{{ROOT}}work.html">Work</a></li>
           <li><a href="{{ROOT}}about.html">About</a></li>
           <li><a href="{{ROOT}}contact.html">Contact</a></li>
@@ -39,10 +37,15 @@
     </div>
     <div class="foot-rule">
       <span>&copy; intrnls</span>
-      <!-- True about the artefact, not a claim about the company. Copy deck v1.1 is
-           landed; the fact slots it reserves are still open — see the punch list in
-           web/README.md §13. -->
-      <span class="right">Skeleton v0.1 &middot; copy v1.1 &middot; brand tokens v0.1</span>
+      <!-- True about the artefact, not a claim about the company. "Skeleton v0.1"
+           was dropped 2026-08-21: the site has real copy, a real logo, real
+           photographs on all four Work cards and real contact details, so calling
+           the whole build a "skeleton" to every visitor read as stale, not honest.
+           Copy deck v1.1 and brand tokens v0.1 are still accurate version numbers
+           (README §13, brand/tokens.css) and stay. A few fact slots are still
+           genuinely reserved — see the punch list in web/README.md §13.3 — but a
+           handful of open slots isn't a skeleton. -->
+      <span class="right">copy v1.1 &middot; brand tokens v0.1</span>
     </div>
   </div>
 </footer>
