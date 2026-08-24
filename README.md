@@ -3,7 +3,7 @@
 The intrnls marketing site — static HTML/CSS/JS, no build step, no framework, no npm. The pages
 in git are the pages that ship.
 
-**Live at:** https://intrnls.com (once DNS is pointed here — see below)
+**Live at:** https://intrnls.com — GitHub Pages; DNS cut over and certificate issued 2026-08-21.
 
 ## Structure
 

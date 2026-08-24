@@ -525,9 +525,9 @@ cannot be screenshotted). Safari and Firefox remain UNVERIFIED.
 
 ### 13.6 Operator answers applied — and one copy rule OVERTURNED  *(ux-engineer, 2026-08-19)*
 
-From the settled part of `web/INTAKE-worksheet.md`. Everything else on that sheet — project
-cards, images, response time, minimum engagement, engagements-at-once, the privacy line — is
-still open and still reserved.
+From the settled part of the operator's intake worksheet (kept in the private docs, not in
+this repo). Everything else on that sheet — project cards, images, response time, minimum
+engagement, engagements-at-once, the privacy line — is still open and still reserved.
 
 **⚠ "studio" is retired. The word is "company". Do not restore it.**
 Copy deck v1.1 set a deliberate voice rule — *"studio", never "vendor" or "service provider"*
