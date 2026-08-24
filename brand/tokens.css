@@ -1,7 +1,9 @@
 /* ============================================================================
    intrnls — brand design tokens  ·  v0.1  (proposed, pending Matthew+David sign-off)
-   CANONICAL SOURCE: intrnls-graphic-identity/tokens/tokens.css
+   CANONICAL SOURCE: the private comms repo, identity/tokens/tokens.css
    Consumer repos SYNC this file — never fork or re-declare it.
+   NOTE: some consumers are PUBLIC — nothing in this file (or the synced README)
+   may name private repos or link private issues; it ships to intrnls.com.
    Doctrine + rationale: ../PALETTE.md
    ----------------------------------------------------------------------------
    Ground truth = this repo + the intrnls.com hero. One gradient, two grounds,
