@@ -29,9 +29,16 @@ otherwise re-derive. `web/img/README.md` owns asset naming, sizes, and the statu
    depicts, confirmed by the operator — not inferred from a filename or by elimination.
    One project's photo under another project's title is the one mistake this site was built
    to never make. When a mapping is ambiguous, ask; don't infer-and-publish.
-6. **The contact form is deliberately inert** (`SEND = null` in `web/js/contact-form.js`,
-   with a documented seam for a real handler). Known, intentional, not "temp stuff" — don't
-   fix it, don't flag it.
+6. **The contact form SENDS. Treat `web/js/contact-form.js` as security-critical.**
+   It posts to an endpoint that emails the submission to us. Two properties are
+   load-bearing and must not be "simplified":
+   - it never shows success without an explicit acknowledgement from the server (not a
+     2xx alone — the response must be JSON and must say so), and
+   - it never posts without a completed bot check.
+   Do not add a `catch` that resolves, do not add a retry, and do not relax the checks in
+   `SEND`. A success message for a message that was never sent is the specific failure
+   this file exists to prevent. The `?state=` preview is gated to localhost on purpose:
+   on the live site `?state=success` would show "Sent." to anyone opening the URL.
 7. **`web/fonts/OFL.txt` must ship with the fonts** (OFL 1.1 clause 2) and **`web/CNAME`
    must stay** (it binds the custom domain). Any deploy change that could drop either is a
    bug. `THIRD-PARTY-NOTICES.md` has the licence reasoning; no `LICENSE` file is deliberate

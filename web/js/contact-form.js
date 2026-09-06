@@ -171,6 +171,16 @@
       clearTimeout(loadTimer);
       if (scriptEl && scriptEl.parentNode) scriptEl.parentNode.removeChild(scriptEl);
       scriptEl = null;
+      /* Tear the old widget down before re-rendering. Recovery is only entered
+         from 'failed', and the error and timeout callbacks fire AFTER a
+         successful render -- so the container still holds a widget, and
+         rendering a second one into it throws. That lands in the catch as a
+         render failure and burns the recovery for nothing. */
+      if (window.turnstile && widgetId !== null) {
+        try { window.turnstile.remove(widgetId); } catch (e) {}
+      }
+      var recoverBox = document.getElementById('c-turnstile');
+      if (recoverBox) recoverBox.textContent = '';
       widgetId = null;
       awaitingPerson = false;
       state = 'idle';
@@ -228,15 +238,32 @@
            connection, for the very visitor who tabbed straight to Send. And once
            a person is being asked to click, the deadline moves out again: no
            human deadline should be twelve seconds. */
-        var deadline = function () {
-          var budget = (state === 'loading' ? SCRIPT_TIMEOUT_MS : 0) +
-                       (awaitingPerson ? INTERACTIVE_MS : CHALLENGE_MS);
-          return budget;
-        };
         var started = Date.now();
+        var phase = state;
+        var sawPerson = false;
+
         var tick = setInterval(function () {
           if (readyWaiters.indexOf(waiter) === -1) { clearInterval(tick); return; }
-          if (Date.now() - started < deadline()) return;
+
+          /* LATCH. after-interactive-callback clears awaitingPerson the moment
+             the person clicks, but the token arrives afterwards. Reading the
+             flag live therefore snapped the budget from the human allowance
+             back to the machine one at exactly the wrong instant, rejecting
+             anyone who took longer than the short budget to click -- which is
+             the entire reason the human allowance exists. Once a person has
+             been asked, they keep it. */
+          if (awaitingPerson) sawPerson = true;
+
+          /* RESTART THE CLOCK ON A PHASE CHANGE. These budgets are meant to be
+             sequential, and measuring a shrinking budget from one fixed origin
+             is not sequential: a script that took nine seconds to load left the
+             challenge three, for exactly the visitor who tabbed straight to
+             Send -- the case the earlier comment claimed to have fixed. */
+          if (state !== phase) { phase = state; started = Date.now(); }
+
+          var budget = (state === 'loading' ? SCRIPT_TIMEOUT_MS : 0) +
+                       (sawPerson ? INTERACTIVE_MS : CHALLENGE_MS);
+          if (Date.now() - started < budget) return;
           clearInterval(tick);
           var ix = readyWaiters.indexOf(waiter);
           if (ix !== -1) {
