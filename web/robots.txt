@@ -1,0 +1,13 @@
+# intrnls.com
+
+# Crawling is allowed. Pages that must not appear in search carry their own
+# <meta name="robots" content="noindex"> instead of being blocked here.
+#
+# WHY IT IS DONE THAT WAY, because the obvious alternative is worse: a
+# Disallow rule stops a crawler FETCHING the page, which means it never sees
+# the noindex tag. A page that is merely disallowed can still be listed in
+# results, titleless, if anything links to it. Blocking and de-indexing are
+# different jobs, and only one of them is this file's.
+
+User-agent: *
+Allow: /

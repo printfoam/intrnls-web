@@ -29,7 +29,7 @@ Two notes, because the set has one real weakness:
 - **Work is the page that can embarrass us.** Three empty project cards read worse than no page at
   all. The original recommendation was: don't ship `/work` until there are three publishable pieces,
   and until then drop it from the nav.
-  **OVERTURNED by operator decision, 2026-08-16 — Work is in the nav.** The reason is worth keeping:
+  **OVERTURNED by a deliberate decision, 2026-08-16 — Work is in the nav.** The reason is worth keeping:
   hiding it from the nav *alone* was incoherent, because the Home hero (`See the work`), the Home
   section link (`All work`) and the footer on all six pages still pointed at it, and Home previews
   the same three empty cards. It was hidden from one door out of four. The choice was consistency or
@@ -61,9 +61,9 @@ maximum a header should carry.
 Journey: **dark → light → light → dark → dark.** You arrive dark, go light to learn and look,
 come back dark to commit. That arc is the point; don't shuffle it for variety.
 
-**The alternative I rejected:** an all-Lab site. More aggressive, and Matthew will like it on sight
-— but it makes the long-copy pages harder to read and it throws away the light/dark duality that is
-literally the two founders. Say the word and it's a one-attribute change per page.
+**The alternative considered and set aside:** an all-Lab site. More aggressive, but it makes the
+long-copy pages harder to read and throws away the light/dark duality. Changing it is a
+one-attribute change per page.
 
 ### One ground flip per page — maximum
 
@@ -525,14 +525,14 @@ cannot be screenshotted). Safari and Firefox remain UNVERIFIED.
 
 ### 13.6 Operator answers applied — and one copy rule OVERTURNED  *(ux-engineer, 2026-08-19)*
 
-From the settled part of the operator's intake worksheet (kept in the private docs, not in
+From the settled part of the team's intake worksheet (kept in the private docs, not in
 this repo). Everything else on that sheet — project cards, images, response time, minimum
 engagement, engagements-at-once, the privacy line — is still open and still reserved.
 
 **⚠ "studio" is retired. The word is "company". Do not restore it.**
 Copy deck v1.1 set a deliberate voice rule — *"studio", never "vendor" or "service provider"*
 (worksheet 0.2, §13 above). **Matthew overruled it on 2026-08-19**: change to "company". That is
-the operator's call on his own company's name for itself, so it outranks the deck. A future
+the team's call on his own company's name for itself, so it outranks the deck. A future
 session that finds "company" in the prose and reaches for the deck's rule is reading a rule that
 has been overturned — leave it. Twelve sources changed (one of them the shared footer, which
 prints on all six pages).
@@ -568,7 +568,7 @@ address reads wrong, and the `dd` under it was always the address.
 
 - **Social ×2 and the whole "Elsewhere" column.** No accounts given, so the heading went with the
   slots and `.foot-grid` is **three** columns (`1.4fr repeat(2,1fr)`), not four with a hole.
-- **Hours**, on the operator's word. The factsheet is three facts; `.fact-wide` gives the street
+- **Hours**, on the team's word. The factsheet is three facts; `.fact-wide` gives the street
   address the full row so nothing sits beside an empty cell.
 - **Home's Proof row** — heading, paragraph and all three chips. Work band now meets the CTA band
   directly; both are `.band`, so the padding and the hairline between sections are what they
@@ -742,7 +742,7 @@ photograph under *"Lighter blocks. Same strength."* would caption one project wi
 the single thing §7 forbids outright — so the plates stay, visibly pending.
 
 - The mismatch is **not** the file numbering. `work-1/2/3.jpg` were named by the session that
-  cropped them, not by the operator; the intake worksheet's *"Work images"* line (§5.3) was never
+  cropped them, not deliberately; the intake worksheet's *"Work images"* line (§5.3) was never
   filled in. Wiring 1→card 1, 2→card 2, 3→card 3 would have put a water tank under the wearables
   card. Subject, not filename, decided placement.
 - `work-1.jpg` is **unplaced**, deliberately. It is a wide shot of the rig the hero was cropped

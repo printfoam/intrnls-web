@@ -269,7 +269,7 @@ h1,h2,h3{font-family:var(--intrnls-font-display); font-weight:800; overflow-wrap
 }
 .head-bar{display:flex; align-items:center; gap:var(--s5); min-height:4.5rem}
 
-/* LOGO SLOT — real lockup, operator-supplied 2026-08-20 (superseded the plan
+/* LOGO SLOT — real lockup, supplied 2026-08-20 (superseded the plan
    below: two separate stroke-color artboards). The delivered SVG's keyline
    stroke was retargeted to currentColor (web/_include/header.html), so ONE
    inlined file reads correctly on both Cashmere and Lab — color here is the
@@ -277,7 +277,7 @@ h1,h2,h3{font-family:var(--intrnls-font-display); font-weight:800; overflow-wrap
 .brand{
   display:flex; align-items:center; margin-right:auto;
 }
-/* 2.25rem, not the original 1.75rem — operator flagged the mark as hard to
+/* 2.25rem, not the original 1.75rem — team flagged the mark as hard to
    read on Cashmere (2026-08-20). Diagnosed as a size problem, not a stroke
    problem: this SVG's keyline strokes are 7px/4px in a 540x180 viewBox, so
    at 1.75rem (28px tall) they render sub-pixel thin regardless of colour —
@@ -431,7 +431,7 @@ h1,h2,h3{font-family:var(--intrnls-font-display); font-weight:800; overflow-wrap
 .work-item p{font-size:var(--t-sm); color:var(--fg-quiet); margin:0}
 
 /* ---------------------------------------------------------------------------
-   11. PROOF — the reserved evidence row. Home's copy of it was CUT by the operator
+   11. PROOF — the reserved evidence row. Home's copy of it was CUT deliberately
    on 2026-08-19; the only surviving user is the case study's Results row, which is
    still deliberately empty so nobody fills it with an unattributable claim later.
    --------------------------------------------------------------------------- */
@@ -466,7 +466,7 @@ h1,h2,h3{font-family:var(--intrnls-font-display); font-weight:800; overflow-wrap
    --------------------------------------------------------------------------- */
 .site-foot{border-top:1px solid var(--hairline); padding-block:var(--s8) var(--s6)}
 /* THREE columns, not four: the "Elsewhere" column went with the socials the
-   operator does not have. The count lives here so the footer closes flush
+   team does not have. The count lives here so the footer closes flush
    instead of ending in an empty cell. */
 .foot-grid{display:grid; grid-template-columns:1.4fr repeat(2,1fr); gap:var(--s7) var(--s5)}
 .foot-grid h2{font-size:var(--t-mono); font-family:var(--intrnls-font-mono);

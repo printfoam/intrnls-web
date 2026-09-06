@@ -34,19 +34,19 @@ Twelve files are here. **All ten site-facing slots are filled** (`work-1.jpg` is
 exception — see below), wired with real dimensions and honest alt text (`web/README.md` §15).
 **All four Work cards now carry a real photograph, for the first time.**
 
-- `work-4.jpg` (precast) is the printed formwork itself, unfilled — operator-confirmed
+- `work-4.jpg` (precast) is the printed formwork itself, unfilled — confirmed
   2026-08-20 ("just the form, we haven't filled it yet") — so its alt text says "formwork",
   never "concrete part".
 - `work-5.jpg` (burn mask) is a from-scratch re-render, not the earlier recolor patch: a
-  synthetic (non-PII) face in acid green #39FF14, operator-supplied 2026-08-20, hue-checked
+  synthetic (non-PII) face in acid green #39FF14, supplied 2026-08-20, hue-checked
   against the retired cyan and confirmed clear.
-- `work-6.jpg` (wearables) is a composite, not a single frame — two macro stills the operator
+- `work-6.jpg` (wearables) is a composite, not a single frame — two macro stills the team
   asked to run "together" (a static lattice cross-section + the same material flexed between two
-  fingers), project confirmed by the operator 2026-08-20. A third candidate from the same
+  fingers), project confirmed deliberately 2026-08-20. A third candidate from the same
   delivery (a cross-section with a lab measurement annotation baked into the pixels) was held
-  back per the operator ("may be best on its own") — staged, not used, not discarded.
+  back per the team ("may be best on its own") — staged, not used, not discarded.
 
-`portrait-david.jpg` is now 1024×1365 (was 432×576) — operator-supplied 2026-08-20, same crop/
+`portrait-david.jpg` is now 1024×1365 (was 432×576) — supplied 2026-08-20, same crop/
 frame, just real resolution. Every project photo the site needs is now on the site.
 
 `work-1.jpg` (the wide shot of the bench rig the Home hero was cropped from) is **not published**:

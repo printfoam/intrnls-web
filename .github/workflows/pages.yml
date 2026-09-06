@@ -1,8 +1,22 @@
 name: Deploy to GitHub Pages
 
 # The site's source lives under web/ (not repo root) — see web/README.md for why.
-# This workflow just hands that folder to GitHub Pages on every push to main.
-# Nothing here builds anything: web/ is already the deployable, checked output.
+#
+# WHAT GETS PUBLISHED IS A SUBSET OF web/, NOT ALL OF IT.
+# This used to hand the whole folder to Pages, which meant build sources were
+# served from the live domain: intrnls.com/README.md, /check.py, /_include/sync.py
+# and /img/README.md all returned 200. Those are working files. A website does not
+# have them, and one of them announced the site as a "v0.1 skeleton" to anyone —
+# or any crawler — that fetched it.
+#
+# The fix separates SOURCE from PUBLISHED OUTPUT rather than moving files around:
+# check.py and sync.py both resolve their paths from __file__ and expect the
+# current layout, so relocating them would rewire the QA gate for no benefit. The
+# tree stays as the tooling expects; the artifact is filtered on the way out.
+#
+# The prune list below is the kind of list that rots. If you add a working file
+# under web/, prune it here in the same commit. The guard step after it fails the
+# deploy rather than trusting the list to be complete.
 
 on:
   push:
@@ -26,9 +40,77 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+
+      - name: Stage the publishable subset of web/
+        run: |
+          set -euo pipefail
+          rm -rf _site
+          cp -r web _site
+
+          # Build sources and working notes: in the repo on purpose, never served.
+          rm -rf _site/_include
+          rm -f  _site/check.py
+          rm -f  _site/README.md
+          rm -f  _site/img/README.md
+
+          # An unfinished template with visible "SLOT" chips. It is QA'd as one of
+          # the six pages deliberately; being checked and being PUBLISHED differ.
+          rm -f  _site/work/_case-study-template.html
+
+          echo "--- published artifact ---"
+          find _site -type f | sort
+
+      - name: Strip build commentary from the published HTML
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import re, pathlib
+          # The source files carry ~73 KB of design and decision commentary across
+          # ~233 comments. That is valuable to whoever maintains this and it stays in
+          # the repo -- but it was being SERVED, so anyone doing View Source on
+          # intrnls.com read the internal reasoning, including which claims had been
+          # cut and why. Scrubbing individual phrases is whack-a-mole; the comments
+          # themselves are the thing that does not belong on the public artifact.
+          #
+          # Safe because HTML comments are inert. The <!-- @include:... --> markers
+          # sync.py relies on live in the SOURCE tree, which this does not touch.
+          total = 0
+          for p in pathlib.Path('_site').rglob('*.html'):
+              s = p.read_text(encoding='utf-8')
+              out = re.sub(r'<!--(?!\[if).*?-->', '', s, flags=re.S)
+              out = re.sub(r'\n[ \t]*\n[ \t]*\n+', '\n\n', out)
+              if out != s:
+                  total += len(s) - len(out)
+                  p.write_text(out, encoding='utf-8', newline='')
+          print(f'stripped {total} characters of commentary from the artifact')
+          PY
+
+      - name: Confirm no commentary survived
+        run: |
+          set -euo pipefail
+          if grep -rlE "a deliberate decision|were cut|NUMBERS ARE CUT|SLOT|TODO" _site --include='*.html' >/dev/null 2>&1; then
+            echo "Internal commentary still present in the artifact:"
+            grep -rnE "a deliberate decision|were cut|NUMBERS ARE CUT|TODO" _site --include='*.html' | head -20
+            exit 1
+          fi
+          echo "Clean: no build commentary in the published HTML."
+
+      - name: Fail the deploy if a working file survived
+        run: |
+          set -euo pipefail
+          leaked=$(find _site -type f \
+            \( -name '*.py' -o -name '*.md' -o -path '*/_include/*' \) \
+            ! -name 'OFL.txt' || true)
+          if [ -n "$leaked" ]; then
+            echo "These would have been served from the live domain:"
+            echo "$leaked"
+            exit 1
+          fi
+          echo "Clean: no working files in the artifact."
+
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: web
+          path: _site
       - id: deployment
         uses: actions/deploy-pages@v4
