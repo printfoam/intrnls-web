@@ -92,9 +92,7 @@
   --err-bg:  color-mix(in srgb, var(--intrnls-state-critical) 6%, var(--bg));
   --ok:      var(--go-ink);
   --field-bg: var(--bg);
-  /* The filled "go" button, as VARIABLES rather than a ground-descendant rule —
-     see the note on .btn-go in §5. On white, neat acid green cannot carry white
-     text or black text legibly at 13px, so the fill steps down to --go-ink. */
+
   --go-fill:       var(--go-ink);
   --go-fill-ink:   var(--intrnls-white);
   --go-fill-hover: color-mix(in srgb, var(--go-ink) 85%, var(--intrnls-black));
@@ -205,14 +203,6 @@ h1,h2,h3{font-family:var(--intrnls-font-display); font-weight:800; overflow-wrap
 .btn .arw{transition:transform var(--ease)}
 .btn:hover .arw{transform:translateX(3px)}
 
-/* primary = the acid-green "go". The only filled control on the page.
-   FIXED 2026-08-15 (ux-engineer): this used to be a plain rule plus a
-   [data-ground="cashmere"] .btn-go override. That override matched by ANCESTRY,
-   so a green button inside a Lab band on a Cashmere page (every interior page's
-   CTA) took the Cashmere fill while --go-ink resolved to neat acid green from
-   the nearer Lab scope: white text on acid green, measured 1.36:1. Ground-aware
-   values belong in ground-scoped VARIABLES, which resolve from the nearest
-   ancestor that sets a ground. Do not reintroduce a descendant override here. */
 .btn-go{background:var(--go-fill); color:var(--go-fill-ink); border-color:var(--go-fill)}
 /* an accent-coloured ring on an accent-coloured fill is a ring you can't see —
    the one control that overrides the global ring colour, and the only one. */
@@ -269,21 +259,10 @@ h1,h2,h3{font-family:var(--intrnls-font-display); font-weight:800; overflow-wrap
 }
 .head-bar{display:flex; align-items:center; gap:var(--s5); min-height:4.5rem}
 
-/* LOGO SLOT — real lockup, supplied 2026-08-20 (superseded the plan
-   below: two separate stroke-color artboards). The delivered SVG's keyline
-   stroke was retargeted to currentColor (web/_include/header.html), so ONE
-   inlined file reads correctly on both Cashmere and Lab — color here is the
-   only thing that needs to flip per ground, and --fg already does that. */
 .brand{
   display:flex; align-items:center; margin-right:auto;
 }
-/* 2.25rem, not the original 1.75rem — team flagged the mark as hard to
-   read on Cashmere (2026-08-20). Diagnosed as a size problem, not a stroke
-   problem: this SVG's keyline strokes are 7px/4px in a 540x180 viewBox, so
-   at 1.75rem (28px tall) they render sub-pixel thin regardless of colour —
-   confirmed on a reliable full-page screenshot, not the flaky small-viewport
-   captures this session kept hitting. currentColor stays; a heavier/darker
-   stroke would fight the mark's actual (thin, geometric) design intent. */
+
 .brand svg{
   display:block; height:2.25rem; width:auto; color:var(--fg);
 }
@@ -328,12 +307,6 @@ h1,h2,h3{font-family:var(--intrnls-font-display); font-weight:800; overflow-wrap
 .hero-foot .lede{max-width:48ch; margin:0}
 .hero-actions{display:flex; flex-wrap:wrap; align-items:center; gap:var(--s4); justify-content:flex-end}
 
-/* ---------------------------------------------------------------------------
-   8. SLOTS — the honesty rule.
-   PROSE placeholders read finished (they are marked in HTML comments + README).
-   ASSET and FACT placeholders are VISIBLY empty. We never render a fake client
-   mark, a fake number or a fake quote, not even for one screenshot.
-   --------------------------------------------------------------------------- */
 .slot{
   display:grid; place-content:center; gap:var(--s3); text-align:center;
   background:var(--panel);
@@ -395,13 +368,6 @@ h1,h2,h3{font-family:var(--intrnls-font-display); font-weight:800; overflow-wrap
 }
 .card .tags{margin-top:auto; padding-top:var(--s4)}
 
-/* Real copy landed titles of very different lengths in the same row ("Materials"
-   next to "Pilot → commercialization", "Big problems only" next to "Physics first,
-   then opinion"). One title wrapping to two lines dropped that card's body a line
-   below its siblings and the row read ragged. Above the 1-up breakpoint the title
-   reserves two lines, so every body in a row starts on the same baseline; it is a
-   floor, not a cap, so a three-line title still grows. At 1-up there is no row to
-   align to, so the rule is not applied and no card carries dead space. */
 @media (min-width:721px){
   .cards .card .h3{min-height:2.5em}   /* 2 lines at --t-h3's 1.25 line-height */
 }
@@ -410,13 +376,7 @@ h1,h2,h3{font-family:var(--intrnls-font-display); font-weight:800; overflow-wrap
    10. WORK — the one ground flip on this page (Cashmere). Photography needs it.
    --------------------------------------------------------------------------- */
 .work-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:var(--s5)}
-/* BUG FIX, 2026-08-20: work.html has carried data-cols="2" since the fourth
-   project cleared, and its comment describes a 2x2 block — but data-cols was only
-   ever implemented for .cards, so the four cards were rendering 3-up with the
-   fourth orphaned in a row of its own, which is precisely what that attribute was
-   added to avoid. Same pattern as .cards, including both responsive steps below:
-   the attribute selector out-specifies the plain .work-grid rules inside the media
-   queries, so it has to be repeated there or a phone gets a frozen 2-up. */
+
 .work-grid[data-cols="2"]{grid-template-columns:repeat(2,1fr)}
 .work-item{display:flex; flex-direction:column; gap:var(--s4)}
 /* .shot is the 4:3 plate wherever it appears — it used to be scoped to
@@ -430,11 +390,6 @@ h1,h2,h3{font-family:var(--intrnls-font-display); font-weight:800; overflow-wrap
 }
 .work-item p{font-size:var(--t-sm); color:var(--fg-quiet); margin:0}
 
-/* ---------------------------------------------------------------------------
-   11. PROOF — the reserved evidence row. Home's copy of it was CUT deliberately
-   on 2026-08-19; the only surviving user is the case study's Results row, which is
-   still deliberately empty so nobody fills it with an unattributable claim later.
-   --------------------------------------------------------------------------- */
 /* Outer frame solid, inner tiles dashed — so the hierarchy reads "a real row that
    is deliberately empty", not "everything here is broken". */
 .proof{
@@ -465,9 +420,7 @@ h1,h2,h3{font-family:var(--intrnls-font-display); font-weight:800; overflow-wrap
    surface; repeating it is the duplicate-lockup mistake, not a convention.
    --------------------------------------------------------------------------- */
 .site-foot{border-top:1px solid var(--hairline); padding-block:var(--s8) var(--s6)}
-/* THREE columns, not four: the "Elsewhere" column went with the socials the
-   team does not have. The count lives here so the footer closes flush
-   instead of ending in an empty cell. */
+
 .foot-grid{display:grid; grid-template-columns:1.4fr repeat(2,1fr); gap:var(--s7) var(--s5)}
 .foot-grid h2{font-size:var(--t-mono); font-family:var(--intrnls-font-mono);
   letter-spacing:.18em; text-transform:uppercase; color:var(--label); font-weight:500}
@@ -483,14 +436,6 @@ h1,h2,h3{font-family:var(--intrnls-font-display); font-weight:800; overflow-wrap
   font-family:var(--intrnls-font-mono); font-size:var(--t-mono);
   letter-spacing:.14em; text-transform:uppercase; color:var(--label)}
 .foot-rule .right{margin-left:auto}
-
-/* ===========================================================================
-   14. LONG-FORM + PAGE FURNITURE   (added building What We Do / Work / About /
-   Contact — web/README.md §11 hands these pages and the form to the ux-engineer.)
-   Everything here is layout and type only; the sole colours are the state inks
-   declared in §3. FOUR genuinely new pieces are flagged for the art director in
-   web/README.md §12: .split, .factsheet, .notice and the form.
-   =========================================================================== */
 
 /* ---- .split — the long-copy workhorse: a mono label column against a prose
    column. What We Do's capabilities, About's stance, the case study's sections.
@@ -535,10 +480,7 @@ h1,h2,h3{font-family:var(--intrnls-font-display); font-weight:800; overflow-wrap
 
 /* ---- factsheet — a case study's role/duration/discipline row. dt is the mono
    label; dd is either real text or a visibly-empty FACT slot. ------------- */
-/* 3 columns: the only unscoped consumer is the case-study template, which
-   dropped its 4th item (Disciplines, a tags row) 2026-08-20 -- see
-   web/README.md §16. Contact's factsheet always gets the 2-col `aside`
-   override below regardless of this value. */
+
 .factsheet{
   display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:var(--s5);
   border-top:1px solid var(--hairline); padding-top:var(--s5); margin:0;
@@ -560,8 +502,6 @@ h1,h2,h3{font-family:var(--intrnls-font-display); font-weight:800; overflow-wrap
 /* in a half-width column (Contact's aside) four across is too tight */
 aside .factsheet{grid-template-columns:repeat(2,minmax(0,1fr))}
 
-/* ---- galleries + extra asset ratios. The "shot" in the class name is what
-   makes the hatch selector in §8 pick these up — keep it. ----------------- */
 /* .duo — two equal content columns (form + aside, portrait pair). Stacks at 720. */
 .duo{display:grid; grid-template-columns:1fr 1fr; gap:var(--s7) var(--s8); align-items:start}
 
@@ -574,18 +514,6 @@ aside .factsheet{grid-template-columns:repeat(2,minmax(0,1fr))}
 .slot.shot-portrait{aspect-ratio:3/4; border-radius:var(--r-md); max-width:22rem}
 .slot.shot-square{aspect-ratio:1; border-radius:var(--r-md)}
 
-/* ---- REAL PHOTOGRAPHY. A filled plate and an empty one must hold the SAME box,
-   or a page half-filled with photographs reflows as the slots are replaced one by
-   one. So the ratio and the radius are repeated here for <img>, and nothing else
-   is: an <img> takes none of .slot's dashed border, hatch or padding, because it
-   is not reserved — it is filled.
-   height:auto is load-bearing. The width/height ATTRIBUTES are the file's real
-   pixels (so the browser reserves the box before the bytes land and nothing jumps),
-   and without height:auto that attribute height stays literal while max-width
-   shrinks the width — the photograph squashes. With it, aspect-ratio governs.
-   object-fit:cover then matters in exactly one place: .hero-media re-crops to 4:3
-   under 640px, and cover takes the middle rather than distorting.
-   The panel behind is what shows during decode — a token surface, not white. ---- */
 img.hero-media, img.shot, img.shot-wide, img.shot-portrait, img.shot-square{
   width:100%; height:auto; object-fit:cover; background:var(--panel);
 }
@@ -608,10 +536,6 @@ code{font-family:var(--intrnls-font-mono); font-size:.9em; color:var(--fg)}
   border-top:1px solid var(--hairline); padding-top:var(--s5); margin-top:var(--s8);
 }
 
-/* ---- .notice — an editorial aside that is TRUE about the artefact itself
-   (e.g. "this file is a template"). Never a place to park a claim about a
-   client. Status is border + glyph + word; the glyph is aria-hidden and the
-   word is in the sentence, so it survives greyscale and a screen reader. -- */
 .notice{
   display:flex; gap:var(--s4); align-items:flex-start;
   border:1px solid var(--hairline); border-left-width:3px;
@@ -733,10 +657,6 @@ select.input{appearance:none; -webkit-appearance:none; padding-right:var(--s7)}
   .hero-actions .btn{justify-content:center}
 }
 
-/* ---------------------------------------------------------------------------
-   17. NAV STATE + NO-JS. Kept out of §6 so the reference page's chrome block
-   stays readable, but these are header rules.
-   --------------------------------------------------------------------------- */
 /* The Contact item is a button, so the generic active underline would hang
    outside it. Tuck it inside — the current page still reads as colour + a
    drawn mark + aria-current, never colour alone. */
@@ -779,3 +699,6 @@ select.input{appearance:none; -webkit-appearance:none; padding-right:var(--s7)}
   html{color-scheme:light}
   body{background:var(--intrnls-white); color:var(--intrnls-ink)}
 }
+
+/* Long URLs in fine print (data credits) wrap instead of pushing the page sideways on phones. */
+.fineprint a{overflow-wrap:anywhere}

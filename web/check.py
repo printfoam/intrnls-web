@@ -75,10 +75,15 @@ WEB = pathlib.Path(__file__).resolve().parent
 # a partial is a page too — PAGES is asserted against the tree by check_pages_list.
 PAGES = [
     "index.html",
-    "what-we-do.html",
-    "work.html",
+    "calculator.html",
+    "calculator/index.html",
+    "calculator/pad.html",
+    "calculator/method.html",
     "about.html",
     "contact.html",
+    "report.html",
+    "what-we-do.html",      # redirect stub to index.html#how
+    "work.html",            # redirect stub to index.html
     "work/_case-study-template.html",
 ]
 

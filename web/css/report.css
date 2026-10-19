@@ -1,0 +1,146 @@
+/* Fan energy report (report.html). A letter-size document on the Cashmere ground.
+   Tokens only. On screen the sheets stack and scale; in print each sheet is one page.
+   One logo per sheet, the letterhead lockup. The gradient appears once, as the 1px
+   letterhead rule under each header (chrome), plus the cover title. */
+@page{size:letter; margin:0}
+html{background:var(--panel-2)}
+body{background:var(--panel-2)}
+.rp-tools{display:flex; flex-wrap:wrap; gap:var(--s3); align-items:center; justify-content:center;
+  padding:var(--s5) var(--gutter)}
+.rp-tools .btn{min-height:3rem}
+.rp-sample{max-width:8.5in; margin:0 auto var(--s4); padding:var(--s3) var(--s4); border:2px dashed var(--fg);
+  border-radius:var(--r-sm); background:var(--bg); font-weight:600; font-size:var(--t-sm)}
+
+.sheet{position:relative; box-sizing:border-box; width:100%; max-width:8.5in; min-height:11in;
+  margin:0 auto var(--s6); padding:.55in .7in .9in; background:var(--bg); color:var(--fg);
+  display:flex; flex-direction:column; box-shadow:0 1px 3px color-mix(in srgb, var(--intrnls-black) 18%, transparent)}
+@media (max-width:640px){ .sheet{min-height:0; padding:var(--s6) var(--s5) var(--s9)} }
+
+/* letterhead: lockup left, the PRELIMINARY stamp right, a 1px gradient rule under */
+.rp-head{display:flex; align-items:center; justify-content:space-between; gap:var(--s4); padding-bottom:var(--s4); position:relative}
+.rp-head::after{content:""; position:absolute; left:0; right:0; bottom:0; height:1px; background:var(--gradient)}
+.rp-logo{display:block; width:1.75in; max-width:45%}
+.rp-logo img{display:block; width:100%; height:auto}
+.rp-stamp{font-family:var(--intrnls-font-mono); font-size:.75rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase;
+  border:1.5px solid var(--fg); border-radius:var(--r-sm); padding:.3rem .55rem; white-space:nowrap}
+.rp-stamp .ic{margin-right:.35rem}
+
+.rp-body{flex:1; padding-top:var(--s6)}
+.rp-body h2{font-size:1.5rem; line-height:1.15; margin:0 0 var(--s4)}
+.rp-body h3{font-size:1rem; font-weight:700; margin:var(--s5) 0 var(--s2)}
+.rp-body p{margin:0 0 var(--s3); font-size:.95rem; line-height:1.55; color:var(--fg-quiet); max-width:62ch}
+.rp-body p strong{color:var(--fg)}
+.rp-kicker{display:block; font-family:var(--intrnls-font-mono); font-size:.6875rem; letter-spacing:.18em; text-transform:uppercase; color:var(--label); margin-bottom:var(--s3)}
+
+/* cover block */
+.rp-cover{padding:var(--s5) 0 var(--s6); border-bottom:1px solid var(--hairline); margin-bottom:var(--s6)}
+.rp-cover h1{font-size:clamp(2rem, 6vw, 2.75rem); line-height:1.02; letter-spacing:-.03em; margin:0 0 var(--s5)}
+.rp-for{display:grid; grid-template-columns:auto 1fr; gap:var(--s2) var(--s5); margin:0; font-size:.95rem}
+.rp-for dt{font-family:var(--intrnls-font-mono); font-size:.6875rem; letter-spacing:.14em; text-transform:uppercase; color:var(--label); padding-top:.2rem}
+.rp-for dd{margin:0; font-weight:600}
+
+/* inputs table and headline numbers */
+.rp-inputs{width:100%; border-collapse:collapse; font-size:.95rem; margin-bottom:var(--s5)}
+.rp-inputs th, .rp-inputs td{text-align:left; padding:.45rem 0; border-bottom:1px solid var(--hairline)}
+.rp-inputs th{font-weight:500; color:var(--fg-quiet); width:45%}
+.rp-inputs td{font-weight:700}
+.rp-nums{display:grid; grid-template-columns:1fr 1fr; gap:var(--s4)}
+@media (max-width:520px){ .rp-nums{grid-template-columns:1fr} }
+.rp-num{border:1px solid var(--hairline); border-radius:var(--r-md); padding:var(--s4) var(--s5)}
+.rp-num span{display:block; font-size:.85rem; color:var(--fg-quiet)}
+.rp-num strong{display:block; font-family:var(--intrnls-font-display); font-weight:800; font-size:2.25rem; line-height:1.1; letter-spacing:-.02em; margin:.15rem 0}
+
+/* charts: inline SVG; meaning is in the direct labels, fills differ in lightness AND pattern */
+.rp-chart{margin:var(--s3) 0 var(--s5)}
+.rp-chart svg{display:block; width:100%; height:auto; overflow:visible}
+.rp-chart text{font-family:var(--intrnls-font-body); font-size:13px; fill:var(--fg)}
+.rp-chart .t-quiet{fill:var(--fg-quiet)}
+.rp-chart .t-strong{font-weight:700}
+.rp-chart .axis{stroke:var(--hairline); stroke-width:1}
+.rp-chart .b0{fill:var(--intrnls-ink)}
+.rp-chart .b1{fill:url(#rp-hatch-1)}
+.rp-chart .b2{fill:url(#rp-hatch-2)}
+.rp-chart .bm{fill:var(--intrnls-slate)}
+.rp-chart .pat1{stroke:var(--intrnls-crimson); stroke-width:2.5}
+.rp-chart .pat2{stroke:var(--intrnls-orange); stroke-width:4}
+.rp-chart .pat-bg1{fill:color-mix(in srgb, var(--intrnls-crimson) 18%, var(--bg))}
+.rp-chart .pat-bg2{fill:color-mix(in srgb, var(--intrnls-orange) 30%, var(--bg))}
+.rp-chart .outline1{fill:none; stroke:var(--intrnls-crimson); stroke-width:1.5}
+.rp-chart .outline2{fill:none; stroke:var(--intrnls-orange); stroke-width:1.5}
+.rp-cap{font-size:.8rem !important; color:var(--fg-quiet)}
+
+.rp-month{width:100%; border-collapse:collapse; font-size:.8rem; font-variant-numeric:tabular-nums}
+.rp-month th, .rp-month td{padding:.3rem .25rem; border-bottom:1px solid var(--hairline); text-align:right}
+.rp-month th:first-child, .rp-month td:first-child{text-align:left}
+.rp-month thead th{color:var(--fg-quiet); font-weight:600}
+.rp-month tfoot td{font-weight:700; border-bottom:0}
+
+.rp-whatif{margin-top:var(--s5); padding:var(--s4) var(--s5); border:1.5px dashed var(--fg-quiet); border-radius:var(--r-md)}
+.rp-whatif h3{margin-top:0}
+.rp-list{margin:0 0 var(--s4); padding-left:1.1rem; font-size:.95rem; line-height:1.55; color:var(--fg-quiet); list-style:disc}
+.rp-list li{margin-bottom:.25rem}
+.rp-credits{font-size:.75rem !important; line-height:1.45 !important}
+.rp-cta{margin-top:var(--s5); padding:var(--s4) var(--s5); border:1.5px solid var(--fg); border-radius:var(--r-md)}
+.rp-cta p{margin:0; color:var(--fg)}
+.rp-cta a{color:var(--fg); font-weight:700; text-decoration:underline; text-underline-offset:3px}
+
+/* footer on every sheet: the disclaimer, verbatim, and the page number */
+.rp-foot{position:absolute; left:.7in; right:.7in; bottom:.4in; display:flex; justify-content:space-between; gap:var(--s4);
+  padding-top:var(--s3); border-top:1px solid var(--hairline); font-size:.7rem; line-height:1.4; color:var(--fg-quiet)}
+.rp-foot .pg{white-space:nowrap; font-family:var(--intrnls-font-mono); letter-spacing:.08em}
+@media (max-width:640px){ .rp-foot{left:var(--s5); right:var(--s5); bottom:var(--s4); flex-direction:column; gap:var(--s1)} }
+
+.sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0}
+.rp-scroll{overflow-x:auto; max-width:100%}
+.rp-body{min-width:0}
+.sheet{min-width:0; overflow-x:hidden}
+.rp-month-x{font-size:.7rem; min-width:34rem}
+.rp-month-x th, .rp-month-x td{padding:.3rem .15rem}
+.rp-month-x tbody th{text-align:left; font-weight:600; white-space:nowrap; padding-right:.4rem}
+.rp-month-x .yr{font-weight:700; padding-left:.5rem}
+.rp-credits{font-size:.66rem !important}
+
+.rp-chart{max-width:5.4in}
+.rp-clim{font-size:.72rem}
+.rp-clim th, .rp-clim td{padding:.22rem .3rem; white-space:nowrap}
+
+/* Here's your problem: the one prominent block on page 2, heavy ink rule, no color meaning */
+.rp-problem{margin:var(--s2) 0 var(--s5); padding:var(--s4) var(--s5); border:2px solid var(--fg); border-left-width:6px; border-radius:var(--r-md)}
+.rp-problem .rp-kicker{margin-bottom:var(--s2); color:var(--fg)}
+.rp-problem-text{margin:0 0 var(--s3) !important; font-size:1.0625rem !important; line-height:1.45 !important; color:var(--fg) !important; font-weight:600}
+.rp-problem-cta{margin:0 !important; font-size:.9rem !important; color:var(--fg) !important}
+.rp-problem-cta a{color:var(--fg); text-decoration:underline; text-underline-offset:3px}
+
+@media print{
+  .rp-body p, .rp-list{font-size:.88rem}
+  .rp-credits{font-size:.6rem !important; line-height:1.35 !important}
+  .sheet:last-of-type .rp-body p, .sheet:last-of-type .rp-list{font-size:.84rem}
+  .sheet:last-of-type .rp-body h3{margin-top:var(--s4)}
+  .sheet:last-of-type .rp-list:not(#rp-changes){columns:2; column-gap:var(--s6)}
+  .sheet:last-of-type .rp-list:not(#rp-changes) li{break-inside:avoid}
+  .sheet:last-of-type .rp-cta{margin-top:var(--s4); padding:var(--s3) var(--s4)}
+  .rp-body h2{font-size:1.4rem}
+  html, body{background:var(--bg)}
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact}
+  .rp-tools, .rp-sample, .skip{display:none !important}
+  .sheet{width:8.5in; height:11in; min-height:0; max-width:none; margin:0; box-shadow:none; overflow:hidden;
+    break-after:page; page-break-after:always}
+  .sheet:last-of-type{break-after:auto; page-break-after:auto}
+}
+#rp-month-chart{max-width:none}
+
+/* Upgrade paths panel (inside the what-if box when fan details are given) */
+.rp-paths{width:100%; border-collapse:collapse; margin:var(--s3) 0 var(--s2); font-size:.85rem}
+.rp-paths th, .rp-paths td{text-align:left; padding:.3rem .4rem; border-bottom:1px solid var(--hairline); vertical-align:top}
+.rp-paths thead th{font-weight:600; color:var(--fg-quiet)}
+.rp-paths td{white-space:nowrap}
+.rp-paths tbody tr:last-child th, .rp-paths tbody tr:last-child td{font-style:italic}
+.rp-paths-note{font-size:.85rem; color:var(--fg-quiet); margin:0}
+
+/* Page 4 carries the 2050 changes as well as the method and the credits; tighten it so the credits always fit. */
+@media print{
+  .sheet:last-of-type .rp-body p, .sheet:last-of-type .rp-list{font-size:.8rem; line-height:1.4}
+  .sheet:last-of-type .rp-list li{margin-bottom:.1rem}
+  .sheet:last-of-type .rp-body h3{margin-top:.55rem; margin-bottom:.2rem}
+  .sheet:last-of-type .rp-cta{margin:.5rem 0}
+}

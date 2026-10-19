@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en" data-ground="cashmere">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-slot="page-title">Your fan energy report | Intrnls</title>
+<meta name="description" data-slot="meta-description" content="A preliminary fan energy report from the Intrnls estimator. For discussion purposes and illustrative only.">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="Your fan energy report | Intrnls">
+<meta property="og:description" content="A preliminary fan energy report from the Intrnls estimator. For discussion purposes and illustrative only.">
+<meta property="og:url" content="https://intrnls.com/report.html">
+<!-- @include:head-common -->
+<!-- GENERATED BLOCK — edits here are overwritten. One source:
+     web/_include/head-common.html, then  python3 web/_include/sync.py  .
+     Per-page <title> and <meta name="description"> live in the page ABOVE the
+     marker, because they are per-page by definition. -->
+<meta name="color-scheme" content="dark light">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Intrnls">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://intrnls.com/img/og-card-fill.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Close-up of tall 3D-printed lattice columns with water running down their faces, in the brand treatment: a magenta to orange gradient with the brightest water in green.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://intrnls.com/img/og-card-fill.jpg">
+<meta name="twitter:image:alt" content="Close-up of tall 3D-printed lattice columns with water running down their faces, in the brand treatment: a magenta to orange gradient with the brightest water in green.">
+
+<link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+
+<!-- One line, deliberately blocking and inline: marks the document as scripted BEFORE
+     first paint, so the CSS can show a working stacked nav (instead of a Menu button
+     that does nothing) when JavaScript is off. Nothing else runs inline. -->
+<script>document.documentElement.classList.add('js')</script>
+
+<!-- Tokens first, site second. tokens.css is a VERBATIM sync of brand/tokens.css —
+     re-sync it, never edit it here. site.css declares no palette of its own. -->
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/site.css">
+<link rel="preload" as="font" type="font/woff2" href="fonts/poppins-latin-800.woff2" crossorigin>
+
+<!-- The site's only global script: the mobile menu. Deferred, and nothing on any page
+     needs it to render, read or be navigated. -->
+<script src="js/site.js" defer></script>
+<!-- /@include:head-common -->
+<link rel="stylesheet" href="css/report.css">
+<script src="js/report-data.js" defer></script>
+<script src="js/report.js" defer></script>
+</head>
+
+<!--
+  Fan energy report. Four letter-size sheets, print-ready (Save as PDF from the browser).
+  Ground: Cashmere, like the letterhead. One logo per sheet. Every sheet carries the
+  PRELIMINARY stamp and the disclaimer. Numbers come from IntrnlsReport.compute(inputs);
+  the inputs come from the URL, the person's details from this browser session only.
+-->
+<body>
+<a class="skip" href="#main">Skip to the report</a>
+
+<div class="rp-tools">
+  <button type="button" class="btn btn-line" id="rp-print">Save as PDF</button>
+  <a class="btn btn-text" href="calculator.html" id="rp-back">Back to the estimator <span class="arw" aria-hidden="true">&rarr;</span></a>
+</div>
+<p class="rp-sample" id="rp-sample" role="alert" hidden></p>
+
+<main id="main" tabindex="-1">
+
+  <!-- ======================= SHEET 1: cover, inputs, headline ======================= -->
+  <section class="sheet" aria-labelledby="rp-title">
+    <header class="rp-head">
+      <a class="rp-logo brand" href="index.html" aria-label="Intrnls, home"><img src="img/intrnls-lockup-horizontal.svg" alt="" width="540" height="180"></a>
+      <span class="rp-stamp"><span class="ic" aria-hidden="true">&#9650;</span>Preliminary</span>
+    </header>
+    <div class="rp-body">
+      <div class="rp-cover">
+        <span class="rp-kicker">Fan energy report</span>
+        <h1 id="rp-title"><span class="grad">What your fans cost to run</span></h1>
+        <dl class="rp-for">
+          <dt>Prepared for</dt><dd id="rp-name">You</dd>
+          <dt>Company</dt><dd id="rp-company">Not given</dd>
+          <dt>Site</dt><dd id="rp-site">Not given</dd>
+          <dt>Date</dt><dd id="rp-date"></dd>
+        </dl>
+      </div>
+      <h2>Your inputs and the headline numbers</h2>
+      <table class="rp-inputs">
+        <caption class="sr-only">Your inputs</caption>
+        <tbody>
+          <tr><th scope="row">Equipment</th><td id="rp-in-kind"></td></tr>
+          <tr><th scope="row">Size</th><td id="rp-in-tons"></td></tr>
+          <tr id="rp-in-fan-row" hidden><th scope="row">Fan motors</th><td id="rp-in-fan"></td></tr>
+          <tr><th scope="row">City</th><td id="rp-in-city"></td></tr>
+          <tr><th scope="row">Power price</th><td id="rp-in-price"></td></tr>
+        </tbody>
+      </table>
+      <div class="rp-nums">
+        <div class="rp-num"><span>Your fans use about</span><strong id="rp-kwh"></strong><span>kWh a year, in today&rsquo;s climate.</span></div>
+        <div class="rp-num"><span>That is about</span><strong id="rp-dollars"></strong><span>a year at your power price.</span></div>
+      </div>
+    </div>
+    <footer class="rp-foot"><span>Preliminary. For discussion purposes and illustrative only. Not engineering data. No warranty provided.</span><span class="pg">Page 1 of 4</span></footer>
+  </section>
+
+  <!-- ======================= SHEET 2: climate today, 2030, 2050 ======================= -->
+  <section class="sheet" aria-labelledby="rp-climate-h">
+    <header class="rp-head">
+      <span class="rp-logo"><img src="img/intrnls-lockup-horizontal.svg" alt="Intrnls" width="540" height="180"></span>
+      <span class="rp-stamp"><span class="ic" aria-hidden="true">&#9650;</span>Preliminary</span>
+    </header>
+    <div class="rp-body">
+      <span class="rp-kicker">Your climate</span>
+      <h2 id="rp-climate-h">Warmer, wetter air is harder to cool into.</h2>
+      <p id="rp-climate-lede">Your tower cools water by handing its heat to the outside air. As the wet-bulb temperature rises, there are fewer degrees between the water and the air, so the same tower works harder for the same cooling.</p>
+
+      <h3 id="rp-gap-h">Degrees between the cold water and the air, on the muggiest hour</h3>
+      <div class="rp-chart" id="rp-gap-chart" role="img" aria-labelledby="rp-gap-h"></div>
+
+
+      <!-- Here's your problem: one or two plain sentences from the data (standard fill only),
+           then the invitation. Hidden when the data carries no problem statement. -->
+      <div class="rp-problem" id="rp-problem" hidden>
+        <span class="rp-kicker">Here&rsquo;s your problem</span>
+        <p class="rp-problem-text" id="rp-problem-text"></p>
+        <p class="rp-problem-cta"><strong>Talk to us to find out how we can help.</strong> <a href="https://intrnls.com/contact.html">https://intrnls.com/contact.html</a> or <a href="mailto:contact@intrnls.com">contact@intrnls.com</a></p>
+      </div>
+
+      <div class="rp-scroll"><table class="rp-month rp-clim" id="rp-climate-table">
+        <caption class="sr-only">Climate today, in 2030 and in 2050, middle and high cases</caption>
+        <thead><tr><th scope="col">Climate</th><th scope="col">Design wet-bulb</th><th scope="col" id="rp-col-water">Cold water</th><th scope="col">Margin</th><th scope="col">Hours muggier</th><th scope="col">Fan kWh a year</th></tr></thead>
+        <tbody></tbody>
+      </table></div>
+      <p class="rp-cap"><span id="rp-margin-def"></span> The design wet-bulb is the muggiest hour of a normal year (0.4% of hours are muggier). The bars show the middle case of eight climate models; the table adds the high case. The equipment is the same in every row, sized for today.</p>
+    </div>
+    <footer class="rp-foot"><span>Preliminary. For discussion purposes and illustrative only. Not engineering data. No warranty provided.</span><span class="pg">Page 2 of 4</span></footer>
+  </section>
+
+  <!-- ======================= SHEET 3: month by month, and the what-if ======================= -->
+  <section class="sheet" aria-labelledby="rp-month-h">
+    <header class="rp-head">
+      <span class="rp-logo"><img src="img/intrnls-lockup-horizontal.svg" alt="Intrnls" width="540" height="180"></span>
+      <span class="rp-stamp"><span class="ic" aria-hidden="true">&#9650;</span>Preliminary</span>
+    </header>
+    <div class="rp-body">
+      <span class="rp-kicker">Month by month</span>
+      <h2 id="rp-month-h">Your fans work hardest in the summer.</h2>
+      <div class="rp-chart" id="rp-month-chart" role="img" aria-label="Fan energy by month, in kWh"></div>
+      <div class="rp-scroll"><table class="rp-month rp-month-x" id="rp-month-table">
+        <caption class="sr-only">Fan energy and cost by month</caption>
+        <thead><tr id="rp-month-head"><th scope="col"><span class="sr-only">Measure</span></th></tr></thead>
+        <tbody></tbody>
+      </table></div>
+      <div class="rp-whatif">
+        <h3 id="rp-whatif-h">What if your fans worked less? This is a what-if, not a promise.</h3>
+        <p id="rp-whatif-text"></p>
+        <table class="rp-paths" id="rp-paths" hidden>
+          <caption class="sr-only">Upgrade paths, today's climate</caption>
+          <thead><tr><th scope="col">Path</th><th scope="col">Fan energy a year</th><th scope="col">Cost a year</th><th scope="col">Saves a year</th></tr></thead>
+          <tbody id="rp-paths-body"></tbody>
+        </table>
+        <p class="rp-paths-note" id="rp-paths-note" hidden></p>
+      </div>
+    </div>
+    <footer class="rp-foot"><span>Preliminary. For discussion purposes and illustrative only. Not engineering data. No warranty provided.</span><span class="pg">Page 3 of 4</span></footer>
+  </section>
+
+  <!-- ======================= SHEET 4: how we calculated it, credits, next ======================= -->
+  <section class="sheet" aria-labelledby="rp-how-h">
+    <header class="rp-head">
+      <span class="rp-logo"><img src="img/intrnls-lockup-horizontal.svg" alt="Intrnls" width="540" height="180"></span>
+      <span class="rp-stamp"><span class="ic" aria-hidden="true">&#9650;</span>Preliminary</span>
+    </header>
+    <div class="rp-body">
+      <span class="rp-kicker">How we calculated it</span>
+      <h2 id="rp-how-h">A model of standard equipment, run on real weather.</h2>
+      <p id="rp-how-1">We took the hourly weather NOAA recorded for your city from 2011 to 2024 and worked out, for each hour, how hard the fans of a standard tower or air cooler of your size would have to run. We added up a typical year, then multiplied by your power price.</p>
+      <p>For 2030 and 2050 we shifted that weather by the middle of eight climate models. The numbers describe standard equipment, not our media, and not your exact site.</p>
+      <p><a href="calculator/method.html">A short note on the method is on our website.</a></p>
+
+      <h3>What changes by 2050</h3>
+      <ul class="rp-list" id="rp-changes"></ul>
+      <h3>What we would want to know next</h3>
+      <ul class="rp-list">
+        <li>The fan power on the nameplate, and how the fans are controlled.</li>
+        <li>The kind of fill or pads in it now, and how old they are.</li>
+        <li>How the load changes through the day and the year.</li>
+        <li>Your water treatment, and how often the water is drained.</li>
+        <li>Your real power price, including demand charges.</li>
+      </ul>
+
+      <div class="rp-cta">
+        <p><strong>Talk to an engineer.</strong> Email <a href="mailto:contact@intrnls.com">contact@intrnls.com</a> or use <a href="https://intrnls.com/contact.html">https://intrnls.com/contact.html</a>. We read every message and will get back to you.</p>
+      </div>
+
+      <h3>Data credits</h3>
+      <p class="rp-credits">Weather: NOAA National Centers for Environmental Information, Integrated Surface Database (ISD-Lite), 2011 to 2024, public domain.</p>
+      <p class="rp-credits">Future climate: CMIP6 model output from eight models: ACCESS-CM2 (CSIRO-ARCCSS), CanESM5 (CCCma), EC-Earth3-Veg-LR (EC-Earth-Consortium), GFDL-ESM4 (NOAA-GFDL), INM-CM5-0 (INM), MIROC6 (MIROC), MPI-ESM1-2-HR (MPI-M, DWD, DKRZ) and MRI-ESM2-0 (MRI), licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). Intrnls reduced the output to monthly change factors and applied them to station weather. The data were modified. We acknowledge the World Climate Research Programme, which, through its Working Group on Coupled Modelling, coordinated and promoted CMIP6. We thank the climate modeling groups for producing and making available their model output, the Earth System Grid Federation (ESGF) for archiving the data and providing access, and the multiple funding agencies who support CMIP6 and ESGF.</p>
+    </div>
+    <footer class="rp-foot"><span>Preliminary. For discussion purposes and illustrative only. Not engineering data. No warranty provided.</span><span class="pg">Page 4 of 4</span></footer>
+  </section>
+
+</main>
+</body>
+</html>

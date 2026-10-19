@@ -1,0 +1,78 @@
+/* ============================================================================
+   Page components: hero video, captioned stills, the calculator card.
+   Layout only; no palette of its own, tokens only. Candidates to fold into site.css.
+   The hero-video box is .hero-media's box: 16:6, re-cropping to 4:3 under 640px.
+   The <video> ships a native 4:3 file for that breakpoint (<source media>), so
+   object-fit:cover crops nothing there; on desktop it is 16:6 native too.
+   ============================================================================ */
+.hero-video{margin:0; min-width:0; position:relative; overflow:hidden; border-radius:var(--r-lg); background:var(--panel)}
+.hero-video video,
+.hero-video .hero-still{display:block; width:100%; max-width:100%; height:auto; aspect-ratio:16/6; object-fit:cover}
+@media (max-width:640px){
+  .hero-video video, .hero-video .hero-still{aspect-ratio:4/3}
+}
+
+/* The still is the no-motion path. It is shown INSTEAD of the video when the
+   visitor asks for reduced motion, with or without JavaScript. */
+.hero-video .hero-still{display:none}
+/* (the reduced-motion swap is at the END of this file: it must out-order the toggle's display rule) */
+
+/* Pause / play. WCAG 2.2.2: moving content longer than 5 s gets a stop control.
+   Glyph AND label. JS-only, because without JS it would do nothing. */
+.hero-video .vid-toggle{
+  position:absolute; right:var(--s4); bottom:var(--s4);
+  display:none; align-items:center; gap:var(--s2);
+  padding:.45rem .8rem; border:1px solid var(--hairline); border-radius:var(--r-sm);
+  background:color-mix(in srgb, var(--bg) 72%, transparent);
+  color:var(--fg); font-size:var(--t-sm); font-weight:600; cursor:pointer;
+}
+.js .hero-video .vid-toggle{display:inline-flex}
+.hero-video .vid-toggle:hover{border-color:var(--fg)}
+.hero-video .vid-toggle .ic{font-family:var(--intrnls-font-mono); line-height:1}
+
+/* A caption under a figure: what the frame is, and any credit it owes. */
+.fig-cap{margin:var(--s3) 0 0; font-size:var(--t-sm); line-height:1.5; color:var(--fg-quiet); max-width:var(--measure)}
+/* A still that stands for an interactive tool: framed like a plate, the whole thing is the link. */
+.still{margin:0; min-width:0}
+.still a{display:block; border-radius:var(--r-lg); overflow:hidden; border:1px solid var(--hairline); transition:border-color var(--ease)}
+.still a:hover{border-color:var(--fg-quiet)}
+.still img{display:block; width:100%; height:auto}
+.still-actions{margin-top:var(--s6)}
+/* the CTA band's eyebrow sits centred above the headline */
+.cta .kicker{display:block; margin-bottom:var(--s4)}
+/* a sentence headline inside a .split prose column reads at full ink, not the column's quiet ink */
+.split .prose > h2{color:var(--fg)}
+/* sentence-length section headlines: the 18ch cap is for short titles */
+.sec-head .h2.h2-sentence{max-width:24ch}
+/* one quiet line under the How cards naming the people behind the work */
+.founders{margin-top:var(--s7); color:var(--fg-quiet); max-width:var(--measure)}
+.founders a{color:var(--fg); font-weight:600; white-space:nowrap}
+.founders a:hover{color:var(--accent)}
+/* calculator card: a small still beside a short block of text; stacks at 720 */
+.calc-card{display:grid; grid-template-columns:minmax(0,7fr) minmax(0,5fr); gap:var(--s5) var(--s7); align-items:center}
+.calc-card .kicker{display:block; margin-bottom:var(--s3)}
+.calc-card .h3{color:var(--fg)}
+.calc-card-body{margin:var(--s4) 0 var(--s5); color:var(--fg-quiet); max-width:48ch}
+@media (max-width:720px){ .calc-card{grid-template-columns:minmax(0,1fr)} }
+
+/* two equal cards (fill and pads): eyebrow-style index, body, and a quiet link at the foot */
+.media-cards .card .idx{text-transform:uppercase}
+.media-cards .card-link{margin-top:auto; padding-top:var(--s3); font-size:var(--t-sm); font-weight:600; color:var(--fg)}
+.media-cards .card-link:hover{color:var(--accent)}
+/* calculator intro: the two modes side by side, each with its own map still */
+.mode-cards{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:var(--s7)}
+.mode-cards .h3{margin:var(--s5) 0 var(--s3); color:var(--fg)}
+.mode-cards p{color:var(--fg-quiet); margin:0}
+.modes-note{margin-top:var(--s5); color:var(--fg-quiet); max-width:var(--measure)}
+@media (max-width:720px){ .mode-cards{grid-template-columns:minmax(0,1fr)} }
+
+/* the estimator teaser on Home: a short text card */
+.est-teaser{max-width:44rem}
+.est-teaser .kicker{display:block; margin-bottom:var(--s3)}
+.est-teaser .h3{color:var(--fg)}
+
+@media (prefers-reduced-motion: reduce){
+  .hero-video video{display:none}
+  .hero-video .hero-still{display:block}
+  .js .hero-video .vid-toggle{display:none}
+}

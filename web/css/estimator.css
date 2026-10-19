@@ -1,0 +1,74 @@
+/* Fan energy estimator (calculator.html). Mobile first, tokens only, no palette. */
+.est{max-width:44rem; margin-inline:auto}
+.est-hero{padding-block:clamp(3rem, 8vw, 6rem) var(--s6)}
+.est-hero .kicker{display:block; margin-bottom:var(--s4)}
+.est-hero .h1{font-size:clamp(2.25rem, 7vw, 4rem); line-height:1}
+
+/* the two-way switch: two big radio buttons that read as one control */
+.est-switch{border:0; margin:0 0 var(--s7); padding:0}
+.est-switch legend{font-size:var(--t-sm); font-weight:600; color:var(--fg-quiet); margin-bottom:var(--s3); padding:0}
+.est-switch .opts{display:grid; grid-template-columns:1fr 1fr; gap:var(--s2);
+  padding:var(--s1); border:1px solid var(--hairline); border-radius:var(--r-lg); background:var(--panel)}
+.est-switch label{display:flex; align-items:center; justify-content:center; min-height:3.5rem;
+  border-radius:var(--r-md); font-size:1.125rem; font-weight:700; cursor:pointer; color:var(--fg-quiet); position:relative}
+.est-switch input{position:absolute; opacity:0; inset:0; margin:0; cursor:pointer}
+.est-switch label:has(input:checked){background:var(--fg); color:var(--bg)}
+.est-switch label:has(input:focus-visible){outline:2px solid var(--accent); outline-offset:3px}
+
+/* each control: label and its big live value on one line, the control below */
+.est-field{margin-bottom:var(--s7)}
+.est-head{display:flex; justify-content:space-between; align-items:baseline; gap:var(--s4); flex-wrap:wrap; margin-bottom:var(--s3)}
+.est-head label{font-size:1.0625rem; font-weight:600}
+.est-head output{font-family:var(--intrnls-font-display); font-weight:800; font-size:clamp(1.5rem, 5vw, 2rem); line-height:1}
+.est-note{display:block; font-size:var(--t-sm); color:var(--fg-quiet); font-weight:400}
+
+.est input[type="range"]{width:100%; height:3rem; margin:0; background:transparent; accent-color:var(--go); cursor:pointer}
+.est input[type="range"]::-webkit-slider-runnable-track{height:.5rem; border-radius:999px; background:var(--hairline)}
+.est input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none; appearance:none; width:2.25rem; height:2.25rem;
+  margin-top:-.875rem; border-radius:50%; background:var(--go); border:3px solid var(--bg)}
+.est input[type="range"]::-moz-range-track{height:.5rem; border-radius:999px; background:var(--hairline)}
+.est input[type="range"]::-moz-range-thumb{width:2rem; height:2rem; border-radius:50%; background:var(--go); border:3px solid var(--bg)}
+.est input[type="range"]{-webkit-appearance:none; appearance:none}
+.est input[type="range"]:focus-visible{outline:2px solid var(--accent); outline-offset:4px; border-radius:var(--r-sm)}
+.est .scale{display:flex; justify-content:space-between; font-size:var(--t-sm); color:var(--fg-quiet)}
+
+.est select{width:100%; min-height:3.5rem; padding:0 var(--s4); font:inherit; font-size:1.25rem; font-weight:700;
+  color:var(--fg); background:var(--panel); border:1px solid var(--hairline); border-radius:var(--r-md); cursor:pointer}
+
+/* the two huge numbers */
+.est-result{margin:var(--s8) 0; padding:var(--s6) var(--s5); border:1px solid var(--hairline); border-radius:var(--r-lg); background:var(--panel)}
+.est-result p{margin:0; font-size:1.125rem; color:var(--fg-quiet)}
+.est-result p + p{margin-top:var(--s5)}
+.est-big{display:block; font-family:var(--intrnls-font-display); font-weight:800; color:var(--fg);
+  font-size:clamp(2.75rem, 12vw, 5rem); line-height:1.05; letter-spacing:-.03em; margin-block:var(--s2)}
+
+/* the what-if: set apart so it never reads as a result */
+.est-whatif{border-top:1px solid var(--hairline); padding-top:var(--s7)}
+.est-whatif h2{font-size:clamp(1.5rem, 4.5vw, 2rem); margin-bottom:var(--s2)}
+.est-save{margin:var(--s5) 0 0; font-size:1.25rem; line-height:1.5}
+.est-save strong{font-family:var(--intrnls-font-display); font-weight:800; font-size:1.5em; color:var(--fg)}
+
+.est-fine{margin:var(--s7) 0 var(--s5); font-size:var(--t-sm); color:var(--fg-quiet)}
+.est-actions{display:grid; gap:var(--s4); justify-items:start; padding-bottom:var(--section-y)}
+.est-actions .btn-go{font-size:1.125rem; padding:1.1rem 1.75rem; min-height:3.5rem}
+.est-actions .how{font-size:var(--t-sm); color:var(--fg-quiet); text-decoration:underline; text-underline-offset:3px}
+.est-actions .how:hover{color:var(--fg)}
+@media (max-width:400px){ .est-actions .btn-go{width:100%; justify-content:center} }
+
+/* Today / 2030 / 2050: a small switch above the big numbers (middle climate case) */
+.est-when{border:0; margin:0 0 var(--s5); padding:0}
+.est-when legend{font-size:var(--t-sm); font-weight:600; color:var(--fg-quiet); margin-bottom:var(--s2); padding:0}
+.est-when .opts{display:inline-grid; grid-template-columns:repeat(3, auto); gap:var(--s1); padding:var(--s1);
+  border:1px solid var(--hairline); border-radius:var(--r-md)}
+.est-when label{position:relative; display:flex; align-items:center; justify-content:center; min-height:2.5rem; padding:0 var(--s4);
+  border-radius:var(--r-sm); font-weight:700; color:var(--fg-quiet); cursor:pointer}
+.est-when input{position:absolute; opacity:0; inset:0; margin:0; cursor:pointer}
+.est-when label:has(input:checked){background:var(--fg); color:var(--bg)}
+.est-when label:has(input:focus-visible){outline:2px solid var(--accent); outline-offset:3px}
+
+/* gated report: a quiet block under the what-if; the form is the site's contact form */
+.est-report{margin-top:var(--s7); padding-top:var(--s6); border-top:1px solid var(--hairline)}
+.est-report .h3{margin-bottom:var(--s4)}
+.est-report-open{min-height:3.5rem; font-size:1.0625rem}
+.est-report-form{margin-top:var(--s6); display:grid; gap:var(--s5)}
+.est-report .notice{margin-top:var(--s5)}

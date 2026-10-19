@@ -19,29 +19,6 @@
 (function () {
   'use strict';
 
-  /* ============================================================================
-     intrnls.com contact form -- the send path.
-
-     PUBLIC-SAFE BY CONSTRUCTION. This file is copied VERBATIM into the public
-     site repo, so it contains no internal identifiers, no infrastructure detail
-     beyond the endpoint the browser must call, no review finding references and
-     no risk commentary. If you are about to add a comment explaining WHY a
-     decision was taken, it belongs in the private repo, not here.
-
-     Two properties this code exists to guarantee. Do not "simplify" either one:
-
-     1. It NEVER reports success for a message the server did not acknowledge.
-        A 2xx alone is not enough -- the response must be JSON and must say so
-        explicitly. Do not add a catch that resolves, and do not retry: a retry
-        risks sending twice after the visitor was told it failed.
-
-     2. It NEVER posts without a completed bot check, and the check is loaded
-        only when someone starts using the form. Opening the page contacts no
-        third party at all.
-
-     A failure here must always be an honest failure. The visitor keeps their
-     text and is told to email us instead.
-     ============================================================================ */
   var SEND = (function () {
     'use strict';
 
@@ -81,11 +58,6 @@
       if (el) el.textContent = msg;
     }
 
-    /* The bot check is invisible until the provider decides a person must act.
-       When that happens the visitor is looking at "Sending your message...", with
-       a checkbox that appeared somewhere below and no reason to think anything is
-       expected of them. Say so, take them to it, and stop the clock -- a person
-       needs longer to notice and read than an automatic check needs to run. */
     function personNeeded() {
       awaitingPerson = true;
       status('One more step: confirm you are human to finish sending.');
@@ -113,10 +85,7 @@
       var box = document.getElementById('c-turnstile');
       if (!box) { markFailed('turnstile-no-container'); return; }
       try {
-        /* Set BEFORE render(). If render ever invokes callback synchronously --
-           a pre-cleared challenge does this -- then assigning after would
-           overwrite the 'ready' the callback just set, and a waiter released by
-           it would read widgetId while it was still null. */
+
         state = 'rendered';
         widgetId = window.turnstile.render(box, {
           sitekey: SITEKEY,
@@ -188,10 +157,6 @@
       return true;
     }
 
-    /* Trigger on first interaction with a REAL field. The trap field is excluded
-       on purpose: password managers populate hidden fields, and an autofill event
-       must not be what causes a request to the provider. Focusing Send is also a
-       trigger, the cheapest head start for someone who tabs straight there. */
     (function bindTriggers() {
       var form = document.getElementById('contact-form');
       if (!form) return;
@@ -297,6 +262,13 @@
         turnstile: token
       };
 
+      /* A page served from this machine (a local preview) never posts to the live endpoint:
+         it simulates the acknowledgement so the flow can be tested without a real message. */
+      if (/^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname)) {
+        burnToken();
+        return Promise.resolve({ ok: true, preview: true });
+      }
+
       return fetch(ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -368,9 +340,9 @@
     },
     {
       id: 'c-message',
-      label: 'What are you making?',
+      label: 'What are you working on?',
       test: function (v) { return v.trim().length >= 10; },
-      message: 'Tell us a little about what you are making — a sentence is enough.'
+      message: 'Tell us a little about what you are working on. A sentence is enough.'
     },
     /* THE LIMITS BELOW MIRROR THE SERVER EXACTLY. Where they drift, the visitor
        gets a generic "something went wrong at our end" for input the server was
@@ -384,13 +356,13 @@
     },
     {
       id: 'c-org',
-      label: 'Company or project',
+      label: 'Company or organization',
       test: function (v) { return v.trim().length <= 200; },
       message: 'That is longer than we can accept. Please shorten it.'
     },
     {
       id: 'c-message',
-      label: 'What are you making?',
+      label: 'What are you working on?',
       test: function (v) {
         var t = v.trim();
         return t.length <= 5000 && t.split('\n').length <= 200;
@@ -433,7 +405,7 @@
       var li = document.createElement('li');
       var a = document.createElement('a');
       a.href = '#' + field.id;
-      a.textContent = field.label + ' — ' + field.message;
+      a.textContent = field.label + ': ' + field.message;
       a.addEventListener('click', function (e) {
         e.preventDefault();
         var input = el(field.id);
@@ -484,9 +456,6 @@
     success.focus();
   }
 
-  /* --- live correction: clear a field's error as soon as it is fixed, but never
-     raise a NEW error while someone is still typing. Errors appear on submit and
-     on blur; they disappear the moment the field is right. -------------------- */
   FIELDS.forEach(function (field) {
     var input = el(field.id);
     if (!input) return;
@@ -575,22 +544,15 @@
         } else {
           showFailure(
             'That did not send.',
-            'Something went wrong at our end, not yours — your message is still ' +
-            'in the form. If you do not hear from us within a day, email us ' +
-            'directly rather than resending.'
+            'Something went wrong on our end. Your message is still in the form. ' +
+            'If you do not hear back, email contact@intrnls.com directly ' +
+            'rather than sending it again.'
           );
         }
       }
     });
   });
 
-  /* --------------------------------------------------------------------------
-     STATE PREVIEW — a review tool, not a feature. ?state=… paints one state so
-     the art director and the reviewer can look at all six without submitting
-     anything. It never sends and never fakes a send; ?state=success paints what
-     a WIRED form would show, which is why it is a URL and not a code path.
-     Documented in web/README.md §12.
-     -------------------------------------------------------------------------- */
   /* LOCAL ONLY. On a live form this block is a hazard, not a review tool:
      ?state=success paints a literal "Sent." for a message that was never sent,
      which is the one thing this project has a rule about, and reachable by a
@@ -615,7 +577,7 @@
   } else if (preview === 'server-error') {
     showFailure(
       'That did not send.',
-      'Something went wrong at our end, not yours — your message is still in the form. ' +
+      'Something went wrong on our end. Your message is still in the form. ' +
       'Try again, or email us directly.'
     );
   }
