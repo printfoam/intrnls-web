@@ -620,7 +620,7 @@ AUDIT_JS = r"""
     return s;
   };
 
-  const out = { contrast: [], measured: 0, skipped: 0, grounds: {}, worst: null,
+  const out = { contrast: [], waived: [], measured: 0, skipped: 0, grounds: {}, worst: null,
                 refs: [], marker: [], text: '' };
 
   // ---- CHECK 3: every element with DIRECT text ----------------------------
@@ -650,6 +650,14 @@ AUDIT_JS = r"""
 
     out.measured++;
     out.grounds[ground] = (out.grounds[ground] || 0) + 1;
+    // An operator waiver: the element itself must carry data-contrast-waiver with a
+    // reason (never inherited from a parent). It is reported on every run, and the
+    // Python side allows at most one per page. A blank reason waives nothing.
+    const waiver = (el.getAttribute('data-contrast-waiver') || '').trim();
+    if (waiver && ratio < need - 1e-6) {
+      out.waived.push({ el: name(el), txt: txt.slice(0, 46), ratio: +ratio.toFixed(2), need, why: waiver });
+      return;
+    }
     if (!out.worst || ratio < out.worst.ratio) {
       out.worst = { ratio: +ratio.toFixed(2), need, el: name(el), txt: txt.slice(0, 40), ground };
     }
@@ -970,6 +978,12 @@ def run_browser_checks(root: pathlib.Path, rep: Report, pages: list[str],
                 grounds[g] = grounds.get(g, 0) + n
             if data["worst"] and (worst is None or data["worst"]["ratio"] < worst["ratio"]):
                 worst = dict(data["worst"], page=rel)
+            for row in data["waived"]:
+                rep.note(3, f"WAIVED {rel} {row['el']} \"{row['txt']}\" {row['ratio']}:1 "
+                            f"(needs {row['need']}:1): {row['why']}")
+            if len(data["waived"]) > 1:
+                rep.fail(3, rel, f"{len(data['waived'])} contrast waivers",
+                         "at most one data-contrast-waiver per page")
             for row in data["contrast"]:
                 rep.fail(3, rel,
                          f"{row['el']} \"{row['txt']}\"",
@@ -1143,6 +1157,9 @@ def _mutations(root: pathlib.Path) -> list[tuple[str, int, str, callable]]:
         ("low-contrast text", 3, index,
          lambda t: _inject_in_main(t, '<p style="background:#000000;color:#111111">'
                                       'mutation low contrast paragraph</p>')),
+        ("contrast waiver with a blank reason", 3, index,
+         lambda t: _inject_in_main(t, '<p data-contrast-waiver=" " style="background:#000000;'
+                                      'color:#111111">mutation blank waiver paragraph</p>')),
         ("4000px-wide box", 4, index,
          lambda t: _inject_in_main(t, '<div style="width:4000px;height:4px">&nbsp;</div>')),
         ("duplicate h1", 5, index,
