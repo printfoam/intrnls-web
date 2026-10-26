@@ -130,7 +130,7 @@
       <button class="vid-toggle" type="button"><span class="ic" aria-hidden="true">&#x2759;&#x2759;</span> <span class="lb">Pause</span></button>
     </figure>
     <!-- The caption carries the footage credit. -->
-    <p class="fig-cap" data-slot="hero-caption">Video: iStock.com/dongfang zhao</p>
+    <p class="fig-cap credit" data-slot="hero-caption">Video: iStock.com/dongfang zhao</p>
   </div>
 
   <!-- ======================= EVAPORATIVE MEDIA: fill and pads, two equal cards =======================
@@ -200,6 +200,30 @@
           <p class="deck" data-slot="how-intro">Geometry is the shape of the media. Ours is a lattice: an open, repeating 3D pattern that the water runs over and the air moves through.</p>
         </div>
       </div>
+      <!-- Our fill: the pan through the lattice (FlowDemo shot 21), the hero until 26 Oct. Same
+           component as the hero: muted loop, pause control, reduced-motion still. Below the fold,
+           so preload="metadata". -->
+      <figure class="hero-video how-video">
+        <video autoplay muted loop playsinline preload="metadata"
+               aria-label="Looping video, no sound. Tall 3D-printed lattice columns stand side by side while water sprays into the gaps between them and runs down their faces. The colors are a brand treatment: a magenta to orange gradient, with the brightest water picked out in green and white." data-slot="how-video-alt"
+               width="1920" height="720" poster="video/cooling-towers-hero_filter-green_1920x720_poster.jpg">
+          <source media="(max-width:640px)" src="video/cooling-towers-hero_filter-green_720x540_av1.mp4" type='video/mp4; codecs="av01.0.04M.08"'>
+          <source media="(max-width:640px)" src="video/cooling-towers-hero_filter-green_720x540.webm" type="video/webm">
+          <source media="(max-width:640px)" src="video/cooling-towers-hero_filter-green_720x540.mp4" type="video/mp4">
+          <source src="video/cooling-towers-hero_filter-green_1920x720_av1.mp4" type='video/mp4; codecs="av01.0.08M.08"'>
+          <source src="video/cooling-towers-hero_filter-green_1920x720.webm" type="video/webm">
+          <source src="video/cooling-towers-hero_filter-green_1920x720.mp4" type="video/mp4">
+        </video>
+        <picture>
+          <source media="(max-width:640px)" srcset="video/cooling-towers-hero_filter-green_720x540_poster.jpg">
+          <img class="hero-still" src="video/cooling-towers-hero_filter-green_1920x720_poster.jpg" width="1920" height="720" decoding="async" loading="lazy"
+               alt="Tall 3D-printed lattice columns stand side by side while water sprays into the gaps between them and runs down their faces. The colors are a brand treatment: a magenta to orange gradient, with the brightest water picked out in green and white." data-slot="how-video-alt-still">
+        </picture>
+        <button class="vid-toggle" type="button"><span class="ic" aria-hidden="true">&#x2759;&#x2759;</span> <span class="lb">Pause</span></button>
+      </figure>
+      <!-- Sighted visitors get the caption, not the alt: it has to say the color is a
+           treatment, or green water reads as dye or data. -->
+      <p class="fig-cap how-cap" data-slot="how-video-caption">A test block on our bench. The colors are a brand treatment.</p>
       <div class="cards">
         <article class="card">
           <span class="idx">01</span>

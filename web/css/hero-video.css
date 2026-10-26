@@ -32,6 +32,13 @@
 
 /* A caption under a figure: what the frame is, and any credit it owes. */
 .fig-cap{margin:var(--s3) 0 0; font-size:var(--t-sm); line-height:1.5; color:var(--fg-quiet); max-width:var(--measure)}
+/* A footage credit: required, but it should not compete with the frame. Smallest-text ink
+   (--label), a step smaller; on black it eases toward the ground but stays above AA (about 5:1). */
+.fig-cap.credit{font-size:calc(var(--t-sm) * .88); color:var(--label)}
+[data-ground="lab"] .fig-cap.credit{color:color-mix(in srgb, var(--fg-muted) 85%, var(--bg))}
+/* our fill pan inside the How band: sits between the intro and the three cards */
+.how-video{margin-top:var(--s7)}
+.how-cap{margin-bottom:var(--s7)}
 /* A still that stands for an interactive tool: framed like a plate, the whole thing is the link. */
 .still{margin:0; min-width:0}
 .still a{display:block; border-radius:var(--r-lg); overflow:hidden; border:1px solid var(--hairline); transition:border-color var(--ease)}
